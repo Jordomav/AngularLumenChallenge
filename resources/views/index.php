@@ -73,12 +73,12 @@
                         </th>
                         <th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Contact</button></th>
                     </tr>
-                    <tr data-ng-repeat="contact in contacts.contacts">
-                        <th>{{contact.id}}</th>
-                        <th>{{contact.first_name + ' ' + contact.last_name}}</th>
-                        <th>{{contact.email}}</th>
-                        <th>{{contact.phone}}</th>
-                        <th>{{contact.created_at}}</th>
+                    <tr data-ng-repeat="contact in contacts.contacts" class="contact">
+                        <td>{{contact.id}}</td>
+                        <td>{{contact.first_name + ' ' + contact.last_name}}</td>
+                        <td>{{contact.email}}</td>
+                        <td>{{contact.phone}}</td>
+                        <td>{{contact.created_at}}</td>
                     </tr>
                     </thead>
             </div>
