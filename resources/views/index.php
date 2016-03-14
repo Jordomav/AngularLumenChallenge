@@ -10,9 +10,10 @@
 </head>
 
 <body>
+<div class="container">
     <h1>Contacts</h1>
     <hr>
-        <div data-ng-app="contactsApp" data-ng-controller="contactsCtrl">
+        <div data-ng-app="contactsApp" data-ng-controller="ContactsController as contacts">
         <!--    CREATE CONTACT MODAL-->
             <div>
                 <!-- Modal -->
@@ -72,9 +73,17 @@
                         </th>
                         <th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Contact</button></th>
                     </tr>
+                    <tr data-ng-repeat="contact in contacts.contacts">
+                        <th>{{contact.id}}</th>
+                        <th>{{contact.first_name + ' ' + contact.last_name}}</th>
+                        <th>{{contact.email}}</th>
+                        <th>{{contact.phone}}</th>
+                        <th>{{contact.created_at}}</th>
+                    </tr>
                     </thead>
             </div>
         </div>
+</div>
 
 
         <script src="/build/js/deps.js"></script>
