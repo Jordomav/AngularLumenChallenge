@@ -1,0 +1,25 @@
+{
+  "name": "angular-lumen-challenge",
+  "version": "1.0.0",
+  "description": "Contact manager with Lumen and Angularjs",
+  "main": "index.php",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jordomav/AngularLumenChallenge.git"
+  },
+  "author": "Jordan Mavrogeorge and Neil Strain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jordomav/AngularLumenChallenge/issues"
+  },
+  "homepage": "https://github.com/Jordomav/AngularLumenChallenge#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
