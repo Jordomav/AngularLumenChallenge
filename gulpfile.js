@@ -78,7 +78,7 @@ gulp.task('watch', function () {
         gulp.start('js');
     });
 
-    watch('./resources/less/*.less', function () {
+    watch('./resources/styles/*.less', function () {
         gulp.start('less');
     });
 });
