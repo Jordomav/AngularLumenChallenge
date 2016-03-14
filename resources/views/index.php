@@ -29,13 +29,29 @@
                             <div class="modal-body">
                                 <form>
                                     <div class="form-group">
+
                                         <h3>Contacts Name:</h3>
-                                        <input type="text" placeholder="First Name" class="form-control"><br>
-                                        <input type="text" placeholder="Last Name" class="form-control"><br>
+                                        <input name="first_name"
+                                               type="text"
+                                               placeholder="First Name"
+                                               class="form-control"><br/>
+                                        <input name="last_name"
+                                               type="text"
+                                               placeholder="Last Name"
+                                               class="form-control"><br/>
+
                                         <h3>Email:</h3>
-                                        <input type="text" placeholder="Email" class="form-control"><br>
+                                        <input name="email"
+                                               type="text"
+                                               placeholder="Email"
+                                               class="form-control"><br/>
+
                                         <h3>Phone:</h3>
-                                        <input type="text" placeholder="Phone" class="form-control"><br>
+                                        <input name="phone"
+                                               type="text"
+                                               placeholder="Phone"
+                                               class="form-control"><br/>
+
                                         <h3>Relation:</h3>
                                         <select multiple class="form-control">
                                             <option>Friend</option>
