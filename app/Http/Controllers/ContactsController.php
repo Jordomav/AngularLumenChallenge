@@ -9,6 +9,9 @@ use \App\Contact;
 
 class ContactsController extends BaseController
 {
+    public function index(){
+        return Contact::all();
+    }
 public function store(Request $request){
     $contact = new Contact;
     $contact->first_name = $request->first_name;
