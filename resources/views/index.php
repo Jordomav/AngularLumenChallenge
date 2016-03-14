@@ -61,7 +61,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Date Created</th>
+                <th>Date Added</th>
                 <th><h4>Select Relation:</h4>
                     <select class="form-control">
                         <option>Friend</option>

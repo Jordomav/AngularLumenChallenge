@@ -16,8 +16,6 @@ class CreateContactsTable extends Migration
             $table->increments('id');
             $table->string('first_name')->required();
             $table->string('last_name')->required();
-            $table->string('user_name')->unique()->required();
-            $table->string('password')->required();
             $table->string('email')->unique()->required();
             $table->string('phone')->required();
             $table->timestamps();
