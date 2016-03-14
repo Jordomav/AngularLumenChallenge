@@ -6,10 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
+    'Vluzrmos\\Tinker\\' => array($vendorDir . '/vluzrmos/tinker/src'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
     'Symfony\\Polyfill\\Php56\\' => array($vendorDir . '/symfony/polyfill-php56'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
+    'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
     'Symfony\\Component\\HttpKernel\\' => array($vendorDir . '/symfony/http-kernel'),
@@ -18,6 +21,8 @@ return array(
     'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
+    'Psy\\' => array($vendorDir . '/psy/psysh/src/Psy'),
+    'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Laravel\\Lumen\\' => array($vendorDir . '/laravel/lumen-framework/src'),
     'Illuminate\\View\\' => array($vendorDir . '/illuminate/view'),
