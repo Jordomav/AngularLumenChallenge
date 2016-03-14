@@ -6,5 +6,7 @@
 
     'use strict';
 
+    angular.module('')
+
 
 }());
