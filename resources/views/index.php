@@ -12,7 +12,7 @@
 <body>
     <h1>Contacts</h1>
     <hr>
-        <div data-ng-app="contactApp" data-ng-controller="contactCtrl">
+        <div data-ng-app="contactsApp" data-ng-controller="contactsCtrl">
         <!--    CREATE CONTACT MODAL-->
             <div>
                 <!-- Modal -->
