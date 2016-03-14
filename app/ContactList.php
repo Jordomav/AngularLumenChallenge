@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 class ContactLists extends Model
 {
-    
+
     public function contactlist(){
         return $this->hasMany(Contact::class);
     }
