@@ -47,7 +47,7 @@
                                            placeholder="Phone"
                                            class="form-control">
 
-                                    <select multiple class="form-control">
+                                    <select multiple class="form-control" style="width: 200px;">
                                         <option>Friend</option>
                                         <option>Family</option>
                                         <option>Co-Worker</option>
@@ -81,11 +81,32 @@
                             <td>{{contact.phone}}</td>
                             <td>{{contact.created_at}}</td>
                             <td>
-                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Delete Contact</button>
+                                <button data-ng-repeat="contact.moveToTrash()" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Delete Contact</button>
                             </td>
                         </tr>
                         </thead>
+                        </table>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i> Trash</button>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Trash Can</h4>
+                            </div>
+                            <div class="modal-body">
+<!--                                SOFT DELETIONS HERE-->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Take out the trash</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+            </div>
             </div>
 
 
