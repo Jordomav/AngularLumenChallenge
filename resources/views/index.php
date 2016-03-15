@@ -65,7 +65,7 @@
 
 
 
-                    <table class="table">
+                    <table class="table roll">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -98,25 +98,28 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th>Remove</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Date Added</th>
+                                            <th>Date Removed</th>
                                         </tr>
                                         <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.inTrash" class="contact">
+                                            <td><input type="checkbox" aria-label="..."></td>
                                             <td>{{contact.first_name + ' ' + contact.last_name}}</td>
                                             <td>{{contact.email}}</td>
                                             <td>{{contact.phone}}</td>
-                                            <td>{{contact.created_at}}</td>
+                                            <td>{{contact.updated_at}}</td>
                                             <td>
-                                                <button data-ng-click ="contacts.moveContactToTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
+                                                <button data-ng-click ="" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Recover Contact</button>
                                             </td>
                                         </tr>
                                     </thead>
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Take out the trash</button>
+                                <button class="btn btn-info"><i class="fa fa-check-square"></i> Check all</button>
+                                <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Take out the trash</button>
                             </div>
                         </div>
                     </div>
