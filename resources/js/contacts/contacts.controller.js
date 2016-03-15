@@ -19,7 +19,7 @@
             vm.lastName = '';
             vm.email = '';
             vm.phone = '';
-            vm.inTrash = '';
+            vm.inTrash = false;
 
             vm.contactForm = {};
 
@@ -63,8 +63,9 @@
 
             };
 
-            vm.moveContactToTrash = function(contact){
-                contact.inTrash = true;
+            vm.toggleContactInTrash = function(contact){
+                console.log(contact);
+                contact.inTrash = !(contact.inTrash);
             };
 
         });
