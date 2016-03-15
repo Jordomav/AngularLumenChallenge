@@ -104,7 +104,7 @@
                                             <th>Phone</th>
                                             <th>Date Removed</th>
                                         </tr>
-                                        <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.inTrash" class="contact">
+                                        <tr data-ng-repeat="contact in contacts.contacts" data-ng-show="contact.inTrash" class="contact">
                                             <td><input type="checkbox" aria-label="..."></td>
                                             <td>{{contact.first_name + ' ' + contact.last_name}}</td>
                                             <td>{{contact.email}}</td>
