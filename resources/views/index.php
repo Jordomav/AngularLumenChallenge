@@ -21,24 +21,28 @@
 
                             <h4>Create a contact</h4>
 
-                            <form action="" class="form-inline">
+                            <form class="form-inline">
 
                                     <input name="first_name"
+                                           data-ng-model="contacts.firstName"
                                            type="text"
                                            placeholder="First Name"
                                            class="form-control">
 
                                     <input name="last_name"
+                                           data-ng-model="contacts.lastName"
                                            type="text"
                                            placeholder="Last Name"
                                            class="form-control">
 
                                     <input name="email"
+                                           data-ng-model="contacts.email"
                                            type="text"
                                            placeholder="Email"
                                            class="form-control">
 
                                     <input name="phone"
+                                           data-ng-model="contacts.phone"
                                            type="text"
                                            placeholder="Phone"
                                            class="form-control">
@@ -49,6 +53,11 @@
                                         <option>Co-Worker</option>
 
                                     </select>
+
+                                    <button data-ng-click="contacts.addContact()" class="btn btn-success">
+                                        <i class="fa fa-user-plus"></i>
+                                           Add
+                                    </button>
 
                             </form>
                         </div>
@@ -72,10 +81,7 @@
                             <td>{{contact.phone}}</td>
                             <td>{{contact.created_at}}</td>
                             <td>
-                                <button class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>Delete Contact</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-pencil"></i>Edit Contact</button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Delete Contact</button>
                             </td>
                         </tr>
                         </thead>

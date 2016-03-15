@@ -15,8 +15,7 @@ $app->get('/', function () use ($app) {
     return view('index');
 });
 
-$app->get('/get-contacts', 'ContactsController@index');
-$app->get('add-contact', 'ContactsController@addContactsModal');
+$app->get('get-contacts', 'ContactsController@index');
 $app->post('save-contact', 'ContactsController@store');
 $app->post('update-contact', 'ContactsController@update');
 $app->post('delete-contact', 'ContactsController@delete');
