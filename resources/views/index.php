@@ -95,7 +95,25 @@
                                 <h4 class="modal-title" id="myModalLabel">Trash Can</h4>
                             </div>
                             <div class="modal-body">
-<!--                                SOFT DELETIONS HERE-->
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Date Added</th>
+                                        </tr>
+                                        <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.inTrash" class="contact">
+                                            <td>{{contact.first_name + ' ' + contact.last_name}}</td>
+                                            <td>{{contact.email}}</td>
+                                            <td>{{contact.phone}}</td>
+                                            <td>{{contact.created_at}}</td>
+                                            <td>
+                                                <button data-ng-click ="contacts.moveContactToTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary">Take out the trash</button>
