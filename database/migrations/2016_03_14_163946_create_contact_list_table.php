@@ -15,7 +15,7 @@ class CreateContactListTable extends Migration
         Schema::create('contact_list', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
-            $table->integer('contact_id');
+            $table->integer('contact_id')->unsigned()->index();
             $table->timestamps();
         });
     }
