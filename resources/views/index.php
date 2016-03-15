@@ -21,7 +21,7 @@
 
                             <h4>Create a contact</h4>
 
-                            <form class="form-inline">
+                            <form name="addContactForm" class="form-inline">
 
                                     <input name="first_name"
                                            data-ng-model="contacts.firstName"

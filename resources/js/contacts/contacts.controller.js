@@ -20,17 +20,24 @@
             vm.email = '';
             vm.phone = '';
 
+            vm.contactForm = {};
+
+
+            vm.displayContacts = function () {
+
+                $http.get('get-contacts')
+                    .then(function successCallback(res) {
+
+                        vm.contacts = res.data;
+                    });
+            };
 
             // Display all current contacts in the database when page is loaded.
-            $http.get('get-contacts')
-                .then(function successCallback(res) {
+            vm.displayContacts();
 
-                    vm.contacts = res.data;
-            });
 
+            // Add new contacts.
             vm.addContact = function () {
-
-                console.log(vm.firstName);
 
                 $http.post('save-contact', {
 
@@ -41,10 +48,15 @@
 
                 })
                     .then( function successCallback (res) {
-                        console.log(res);
+                        vm.displayContacts();
+
+                        vm.firstName = '';
+                        vm.lastName = '';
+                        vm.email = '';
+                        vm.phone = '';
 
                     }, function errorCallback (res) {
-                        console.log('error', res);
+                        alert.log('There was an error saving the contact.', res);
                     });
 
 
