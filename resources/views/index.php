@@ -20,35 +20,37 @@
                         <div class="col-xs-12">
 
                             <h4>Create a contact</h4>
-                                <form action="" class="form-inline">
 
-                                        <input name="first_name"
-                                               type="text"
-                                               placeholder="First Name"
-                                               class="form-control">
+                            <form action="" class="form-inline">
 
-                                        <input name="last_name"
-                                               type="text"
-                                               placeholder="Last Name"
-                                               class="form-control">
+                                    <input name="first_name"
+                                           type="text"
+                                           placeholder="First Name"
+                                           class="form-control">
 
-                                        <input name="email"
-                                               type="text"
-                                               placeholder="Email"
-                                               class="form-control">
+                                    <input name="last_name"
+                                           type="text"
+                                           placeholder="Last Name"
+                                           class="form-control">
 
-                                        <input name="phone"
-                                               type="text"
-                                               placeholder="Phone"
-                                               class="form-control">
+                                    <input name="email"
+                                           type="text"
+                                           placeholder="Email"
+                                           class="form-control">
 
-                                        <select multiple class="form-control">
-                                            <option>Friend</option>
-                                            <option>Family</option>
-                                            <option>Co-Worker</option>
+                                    <input name="phone"
+                                           type="text"
+                                           placeholder="Phone"
+                                           class="form-control">
 
-                                        </select>
-                                </form>
+                                    <select multiple class="form-control">
+                                        <option>Friend</option>
+                                        <option>Family</option>
+                                        <option>Co-Worker</option>
+
+                                    </select>
+
+                            </form>
                         </div>
                     </div>
 
