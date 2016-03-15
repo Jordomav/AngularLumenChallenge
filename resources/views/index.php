@@ -68,20 +68,18 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Date Added</th>
                         </tr>
-                        <tr data-ng-repeat="contact in contacts.contacts" class="contact">
-                            <td>{{contact.id}}</td>
+                        <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.inTrash" class="contact">
                             <td>{{contact.first_name + ' ' + contact.last_name}}</td>
                             <td>{{contact.email}}</td>
                             <td>{{contact.phone}}</td>
                             <td>{{contact.created_at}}</td>
                             <td>
-                                <button data-ng-repeat="contact.moveToTrash()" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Delete Contact</button>
+                                <button data-ng-click ="contacts.moveContactToTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
                             </td>
                         </tr>
                         </thead>

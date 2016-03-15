@@ -19,6 +19,7 @@
             vm.lastName = '';
             vm.email = '';
             vm.phone = '';
+            vm.inTrash = '';
 
             vm.contactForm = {};
 
@@ -62,7 +63,9 @@
 
             };
 
-
+            vm.moveContactToTrash = function(contact){
+                contact.inTrash = true;
+            };
 
         });
 
