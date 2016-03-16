@@ -27,7 +27,7 @@ class ContactsController extends BaseController
     }
 
     public function toggleSoftDelete(Request $request){
-        $contact = Contact::where('id', $request->id);
+        $contact = Contact::find($request->id);
         $contact->intrash = !($contact->intrash);
         $contact->save();
     }

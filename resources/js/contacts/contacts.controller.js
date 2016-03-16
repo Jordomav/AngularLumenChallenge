@@ -34,6 +34,9 @@
                         _.each(vm.contacts, function (contact) {
                             contact.intrash = !!+contact.intrash;
                         });
+
+                    }, function errorCallback(res) {
+                        alert('There was an error retrieving contacts.');
                     });
             };
 
@@ -70,7 +73,15 @@
             vm.toggleContactInTrash = function(contact){
                 contact.intrash = !(contact.intrash);
 
-                $http.post('soft-delete', {id: contact.id});
+                $http.post('soft-delete', {id: contact.id})
+                    .then(function successCallback(res) {
+                        console.log(res);
+
+                    }, function errorCallback(res) {
+                        alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
+                        console.log(res);
+                    })
+                    ;
             };
 
         });
