@@ -20,9 +20,6 @@
             vm.email = '';
             vm.phone = '';
 
-            vm.contactForm = {};
-
-
             vm.displayContacts = function () {
 
                 $http.get('get-contacts')
@@ -68,12 +65,11 @@
                     }, function errorCallback (res) {
                         alert.log('There was an error saving the contact.', res);
                     });
-
-
             };
 
+
             vm.toggleContactInTrash = function(contact){
-                
+
                 contact.intrash = !(contact.intrash);
 
                 $http.post('soft-delete', {id: contact.id})
