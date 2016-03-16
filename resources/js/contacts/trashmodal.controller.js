@@ -14,5 +14,28 @@
                 });
             };
 
+            vm.deleteSelected = function () {
+                console.log('delete selected called');
+                var contactsToDelete = [];
+                _.each(ContactsService.contacts, function (contact) {
+                    if (contact.selected) {
+                        console.log('permanently deleting ' + contact.first_name + ' ' + contact.last_name);
+                        contactsToDelete.push(contact);
+                    }
+                });
+
+                // Only connect with lumen if there are contacts to delete.
+                if (contactsToDelete.length > 0) {
+
+                    ContactsService.delete(contactsToDelete);
+
+                    // Update view to remove deleted contacts.
+                    _.each(contactsToDelete, function (deleted) {
+                        deleted.intrash = false;
+                    })
+
+                }
+            };
+
         });
 }());

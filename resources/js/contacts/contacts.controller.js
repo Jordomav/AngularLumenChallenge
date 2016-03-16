@@ -30,9 +30,9 @@
                         // contact.intrash should be boolean value.
                         _.each(vm.contacts, function (contact) {
                             contact.intrash = !!+contact.intrash;
-
-                            ContactsService.contacts.push(contact);
                         });
+
+                        ContactsService.contacts = vm.contacts;
 
                     }, function errorCallback(res) {
                         alert('There was an error retrieving contacts.');

@@ -42,7 +42,9 @@ class ContactsController extends BaseController
 //        $contact->save();
     }
 
-    public function delete(Contact $contact){
-        $contact->delete();
+    public function deleteContacts(){
+
+        DB::table('contacts')->where('intrash', '1')->delete();
+
     }
 }

@@ -19,7 +19,7 @@ $app->get('get-contacts', 'ContactsController@index');
 $app->post('save-contact', 'ContactsController@store');
 $app->post('update-contact', 'ContactsController@update');
 $app->post('soft-delete', 'ContactsController@toggleSoftDelete');
-$app->post('delete-contact', 'ContactsController@delete');
+$app->post('delete-contacts', 'ContactsController@deleteContacts');
 
 $app->post('save-contactlist', 'ContactListsController@store');
 $app->post('retitle-contactlist', 'ContactListsController@retitle');

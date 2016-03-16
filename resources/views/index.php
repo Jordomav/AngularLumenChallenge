@@ -125,8 +125,17 @@
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button data-ng-click="trash.toggleSelectAll()" class="btn btn-info"><i class="fa fa-check-square"></i> Check all</button>
-                                <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Take out the trash</button>
+
+                                <button data-ng-click="trash.toggleSelectAll()"
+                                        class="btn btn-info">
+                                    <i class="fa fa-check-square"></i> Check all
+                                </button>
+
+                                <button data-ng-click="trash.deleteSelected()"
+                                        class="btn btn-danger">
+                                    <i class="fa fa-times"></i> Take out the trash
+                                </button>
+
                             </div>
                         </div>
                     </div>
