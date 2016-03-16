@@ -7,7 +7,7 @@
     'use strict';
 
     angular.module('contactsApp')
-        .controller('ContactsController', function ($http, $mo) {
+        .controller('ContactsController', function ($http) {
 
             var vm = this;
 
