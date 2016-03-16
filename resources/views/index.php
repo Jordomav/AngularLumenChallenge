@@ -72,14 +72,12 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Date Added</th>
-                            <th>In trash?</th>
                         </tr>
                         <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.intrash" class="contact">
                             <td>{{contact.first_name + ' ' + contact.last_name}}</td>
                             <td>{{contact.email}}</td>
                             <td>{{contact.phone}}</td>
                             <td>{{contact.created_at}}</td>
-                            <td>{{contact.intrash}}</td>
                             <td>
                                 <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
                             </td>
@@ -105,7 +103,6 @@
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Date Removed</th>
-                                            <th>In trash?</th>
                                         </tr>
                                         <tr data-ng-repeat="contact in contacts.contacts" data-ng-show="contact.intrash" class="contact">
                                             <td><input type="checkbox" aria-label="..."></td>
@@ -113,7 +110,6 @@
                                             <td>{{ contact.email }}</td>
                                             <td>{{ contact.phone }}</td>
                                             <td>{{ contact.updated_at }}</td>
-                                            <td>{{ contact.intrash }}</td>
                                             <td>
                                                 <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Recover Contact</button>
                                             </td>
