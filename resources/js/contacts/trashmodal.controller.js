@@ -31,6 +31,7 @@
 
                     // Update view to remove deleted contacts.
                     _.each(contactsToDelete, function (contact) {
+                        contact.selected = false;
                         contact.intrash = false;
                         contact.deleted = true;
                     });
