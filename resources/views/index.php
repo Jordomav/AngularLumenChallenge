@@ -73,7 +73,7 @@
                             <th>Phone</th>
                             <th>Date Added</th>
                         </tr>
-                        <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.intrash" class="contact">
+                        <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.deleted || contact.intrash" class="contact">
                             <td>{{contact.first_name + ' ' + contact.last_name}}</td>
                             <td>{{contact.email}}</td>
                             <td>{{contact.phone}}</td>

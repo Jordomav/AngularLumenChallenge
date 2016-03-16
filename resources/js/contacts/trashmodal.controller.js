@@ -30,10 +30,12 @@
                     ContactsService.delete(contactsToDelete);
 
                     // Update view to remove deleted contacts.
-                    _.each(contactsToDelete, function (deleted) {
-                        deleted.intrash = false;
-                    })
+                    _.each(contactsToDelete, function (contact) {
+                        contact.intrash = false;
+                        contact.deleted = true;
+                    });
 
+                    ContactsService.displayContacts();
                 }
             };
 
