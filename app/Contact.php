@@ -12,7 +12,7 @@ class Contact extends Model
 {
 
     protected $fillable = [
-        'name', 'email', 'intrash'
+        'name', 'email', 'intrash', 'phone'
     ];
 
     protected $hidden = [
