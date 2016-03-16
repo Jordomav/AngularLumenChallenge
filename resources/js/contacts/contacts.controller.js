@@ -73,11 +73,12 @@
             };
 
             vm.toggleContactInTrash = function(contact){
+                
                 contact.intrash = !(contact.intrash);
 
                 $http.post('soft-delete', {id: contact.id})
+
                     .then(function successCallback(res) {
-                        console.log(res);
 
                     }, function errorCallback(res) {
                         alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
