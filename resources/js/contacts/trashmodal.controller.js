@@ -4,15 +4,12 @@
     'use strict';
 
     angular.module('contactsApp')
-        .controller('TrashModalController', function ($modal, $http) {
+        .controller('TrashModalController', function (ContactsService, $http) {
 
             var vm = this;
 
-            console.log($modal);
-
             vm.toggleSelectAll = function () {
-                console.log('select all toggle');
-                _.each(vm.contacts, function (contact) {
+                _.each(ContactsService.contacts, function (contact) {
                     contact.selected = !(contact.selected);
                 });
             };

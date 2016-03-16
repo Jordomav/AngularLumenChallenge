@@ -7,7 +7,7 @@
     'use strict';
 
     angular.module('contactsApp')
-        .controller('ContactsController', function ($http) {
+        .controller('ContactsController', function ($http, ContactsService) {
 
             var vm = this;
 
@@ -33,6 +33,8 @@
                         // contact.intrash should be boolean value.
                         _.each(vm.contacts, function (contact) {
                             contact.intrash = !!+contact.intrash;
+
+                            ContactsService.contacts.push(contact);
                         });
 
                     }, function errorCallback(res) {
@@ -80,8 +82,7 @@
                     }, function errorCallback(res) {
                         alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
                         console.log(res);
-                    })
-                    ;
+                    });
             };
 
         });

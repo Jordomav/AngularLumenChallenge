@@ -83,11 +83,14 @@
                             </td>
                         </tr>
                         </thead>
-                        </table>
+                    </table>
+
+
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i> Trash</button>
+
                 <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div data-ng-controller="TrashModalController as trash" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -122,7 +125,7 @@
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button data-ng-click="toggleSelectAll()" class="btn btn-info"><i class="fa fa-check-square"></i> Check all</button>
+                                <button data-ng-click="trash.toggleSelectAll()" class="btn btn-info"><i class="fa fa-check-square"></i> Check all</button>
                                 <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Take out the trash</button>
                             </div>
                         </div>
@@ -130,8 +133,8 @@
                 </div>
 
             </div>
-            </div>
 
+</div>
 
 
         <script src="/build/js/deps.js"></script>
