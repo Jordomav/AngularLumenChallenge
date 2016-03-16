@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
             $table->string('last_name')->required();
             $table->string('email')->unique()->required();
             $table->string('phone')->required();
-            $table->boolean('intrash')->default('false');
+            $table->boolean('intrash')->default(FALSE);
             $table->timestamps();
         });
     }

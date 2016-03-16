@@ -12,11 +12,13 @@ class Contact extends Model
 {
 
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'intrash'
     ];
+
     protected $hidden = [
         'password',
     ];
+
     public function contact(){
         return $this->hasMany(ContactLists::class);
     }

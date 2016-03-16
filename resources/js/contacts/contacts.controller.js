@@ -19,7 +19,6 @@
             vm.lastName = '';
             vm.email = '';
             vm.phone = '';
-            vm.inTrash = false;
 
             vm.contactForm = {};
 
@@ -30,6 +29,11 @@
                     .then(function successCallback(res) {
 
                         vm.contacts = res.data;
+
+                        // contact.intrash should be boolean value.
+                        _.each(vm.contacts, function (contact) {
+                            contact.intrash = !!+contact.intrash;
+                        });
                     });
             };
 
@@ -64,8 +68,9 @@
             };
 
             vm.toggleContactInTrash = function(contact){
-                console.log(contact);
-                contact.inTrash = !(contact.inTrash);
+                contact.intrash = !(contact.intrash);
+
+                $http.post('soft-delete', {id: contact.id});
             };
 
         });
