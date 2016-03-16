@@ -105,20 +105,24 @@
                                             <th>Date Removed</th>
                                         </tr>
                                         <tr data-ng-repeat="contact in contacts.contacts" data-ng-show="contact.intrash" class="contact">
-                                            <td><input type="checkbox" aria-label="..."></td>
+                                            <td><input data-ng-model="contact.selected"
+                                                       type="checkbox"
+                                                       aria-label="..."></td>
+
                                             <td>{{ contact.first_name + ' ' + contact.last_name }}</td>
                                             <td>{{ contact.email }}</td>
                                             <td>{{ contact.phone }}</td>
                                             <td>{{ contact.updated_at }}</td>
+
                                             <td>
-                                                <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Recover Contact</button>
+                                                <button data-ng-click ="toggleContactInTrash(contact)" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Recover Contact</button>
                                             </td>
                                         </tr>
                                     </thead>
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-info"><i class="fa fa-check-square"></i> Check all</button>
+                                <button data-ng-click="toggleSelectAll()" class="btn btn-info"><i class="fa fa-check-square"></i> Check all</button>
                                 <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Take out the trash</button>
                             </div>
                         </div>

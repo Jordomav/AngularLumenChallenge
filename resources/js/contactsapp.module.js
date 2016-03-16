@@ -6,7 +6,7 @@
 
     'use strict';
 
-    angular.module('contactsApp', []);
+    angular.module('contactsApp', ['ui.bootstrap']);
 
 
 }());

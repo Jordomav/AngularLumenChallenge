@@ -16,6 +16,7 @@ gulp.task('js-deps', function () {
             './bower_components/jquery/dist/jquery.js',
             './bower_components/lodash/lodash.js',
             './bower_components/angular/angular.js',
+            './bower_components/angular-ui/angular-ui.js',
             './bower_components/bootstrap/dist/js/bootstrap.js'
         ])
         .pipe(concat('deps.js'))
