@@ -9,11 +9,13 @@ use \App\Contact;
 
 class ContactsController extends BaseController
 {
-    public function index(){
+    public function index()
+    {
         return Contact::all();
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $contact = new Contact;
 
@@ -26,13 +28,15 @@ class ContactsController extends BaseController
 
     }
 
-    public function toggleSoftDelete(Request $request){
+    public function toggleSoftDelete(Request $request)
+    {
         $contact = Contact::find($request->id);
         $contact->intrash = !($contact->intrash);
         $contact->save();
     }
 
-    public function update(Request $request, Contact $contact){
+    public function update(Request $request, Contact $contact)
+    {
         $contact->update($request->all());
 //        The above should work but in case the bellow should work as well
 //        $contact->first_name = $request->first_name;
@@ -42,7 +46,8 @@ class ContactsController extends BaseController
 //        $contact->save();
     }
 
-    public function deleteContacts(){
+    public function deleteContacts(Request $request)
+    {
 
         DB::table('contacts')->where('intrash', '1')->delete();
 
