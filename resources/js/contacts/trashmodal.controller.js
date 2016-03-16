@@ -8,32 +8,21 @@
 
             var vm = this;
 
-            vm.toggleSelectAll = function () {
-                _.each(ContactsService.contacts, function (contact) {
-                    contact.selected = !(contact.selected);
-                });
-            };
-
-            vm.deleteSelected = function () {
+            vm.deleteContacts= function () {
                 console.log('delete selected called');
-                var contactsToDelete = [];
-                _.each(ContactsService.contacts, function (contact) {
-                    if (contact.selected) {
-                        console.log('permanently deleting ' + contact.first_name + ' ' + contact.last_name);
-                        contactsToDelete.push(contact);
-                    }
-                });
 
                 // Only connect with lumen if there are contacts to delete.
-                if (contactsToDelete.length > 0) {
+                if (ContactsService.contacts.length > 0) {
 
-                    ContactsService.delete(contactsToDelete);
+                    ContactsService.delete(ContactsService.contacts);
 
                     // Update view to remove deleted contacts.
-                    _.each(contactsToDelete, function (contact) {
-                        contact.selected = false;
-                        contact.intrash = false;
-                        contact.deleted = true;
+                    _.each(ContactsService.contacts, function (contact) {
+                        if (contact.intrash) {
+                            contact.deleted = true;
+                            contact.intrash = false;
+                        }
+
                     });
                 }
             };

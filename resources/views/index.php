@@ -108,9 +108,6 @@
                                             <th>Date Removed</th>
                                         </tr>
                                         <tr data-ng-repeat="contact in contacts.contacts" data-ng-show="contact.intrash" class="contact">
-                                            <td><input data-ng-model="contact.selected"
-                                                       type="checkbox"
-                                                       aria-label="..."></td>
 
                                             <td>{{ contact.first_name + ' ' + contact.last_name }}</td>
                                             <td>{{ contact.email }}</td>
@@ -126,12 +123,7 @@
                             </div>
                             <div class="modal-footer">
 
-                                <button data-ng-click="trash.toggleSelectAll()"
-                                        class="btn btn-info">
-                                    <i class="fa fa-check-square"></i> Check all
-                                </button>
-
-                                <button data-ng-click="trash.deleteSelected()"
+                                <button data-ng-click="trash.deleteContacts()"
                                         class="btn btn-danger">
                                     <i class="fa fa-times"></i> Take out the trash
                                 </button>

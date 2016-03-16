@@ -72,10 +72,6 @@
 
                 contact.intrash = !(contact.intrash);
 
-                if (contact.intrash === false) {
-                    contact.selected = false;
-                }
-
                 $http.post('soft-delete', {id: contact.id})
 
                     .then(function successCallback(res) {
