@@ -35,8 +35,6 @@
                         contact.intrash = false;
                         contact.deleted = true;
                     });
-
-                    ContactsService.displayContacts();
                 }
             };
 
