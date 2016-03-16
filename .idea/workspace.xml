@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af7e036a-7746-482d-a8b7-4c583a856f5f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/js/contacts/contacts.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database.sqlite" afterPath="$PROJECT_DIR$/database/database.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/js/app.js" afterPath="$PROJECT_DIR$/public/build/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/contacts/contacts.controller.js" afterPath="$PROJECT_DIR$/resources/js/contacts/contacts.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/contacts/trashmodal.controller.js" afterPath="$PROJECT_DIR$/resources/js/contacts/trashmodal.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/index.php" afterPath="$PROJECT_DIR$/resources/views/index.php" />
     </list>
     <ignored path="AngularChallenge.iws" />
@@ -30,20 +24,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.2727273">
-              <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.37342498">
+              <caret line="114" column="103" selection-start-line="114" selection-start-column="103" selection-end-line="114" selection-end-column="103" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trashmodal.controller.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="trashmodal.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/contacts/trashmodal.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3297414">
+            <state vertical-scroll-proportion="0.0">
               <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
@@ -54,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/resources/js/contacts/contacts.service.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="74" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -144,9 +138,9 @@
         <option value="$PROJECT_DIR$/public/build/js/deps.js" />
         <option value="$PROJECT_DIR$/public/build/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/contacts/contacts.controller.js" />
-        <option value="$PROJECT_DIR$/resources/views/index.php" />
-        <option value="$PROJECT_DIR$/resources/js/contacts/contacts.service.js" />
         <option value="$PROJECT_DIR$/resources/js/contacts/trashmodal.controller.js" />
+        <option value="$PROJECT_DIR$/resources/js/contacts/contacts.service.js" />
+        <option value="$PROJECT_DIR$/resources/views/index.php" />
       </list>
     </option>
   </component>
@@ -924,10 +918,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/index.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/contacts/trashmodal.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2727273">
-          <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -935,15 +929,15 @@
     <entry file="file://$PROJECT_DIR$/resources/js/contacts/contacts.service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="74" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/contacts/trashmodal.controller.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3297414">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.37342498">
+          <caret line="114" column="103" selection-start-line="114" selection-start-column="103" selection-end-line="114" selection-end-column="103" />
           <folding />
         </state>
       </provider>

@@ -118,7 +118,7 @@
                                             <td>{{ contact.updated_at }}</td>
 
                                             <td>
-                                                <button data-ng-click ="toggleContactInTrash(contact)" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Recover Contact</button>
+                                                <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Recover Contact</button>
                                             </td>
                                         </tr>
                                     </thead>
