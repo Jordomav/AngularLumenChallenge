@@ -11,9 +11,6 @@
 
             var vm = this;
 
-            vm.contactLists = [];
-
-            $http.get('')
         });
 
 

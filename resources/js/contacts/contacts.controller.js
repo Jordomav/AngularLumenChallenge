@@ -11,8 +11,16 @@
 
             var vm = this;
 
+            /**
+             * Contact Methods
+             */
+
+
             // Empty lists to hold all contacts.
             vm.contacts = [];
+
+            // Empty list to hold all contact lists
+            vm.contactLists = [];
 
             // Properties to store values from new user form.
             vm.firstName = '';
@@ -81,6 +89,20 @@
                         console.log(res);
                     });
             };
+
+
+
+            /**
+             *  Contact List Methods
+             */
+
+            $http.get('get-contact-lists')
+                .then(function successCallback (res) {
+                    console.log('success');
+                    vm.contactLists = res.data;
+                }, function errorCallback () {
+                    alert('There was an error retrieving Contact Lists');
+                });
 
         });
 

@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use DB;
-use \App\Contact;
+use \App\ContactList;
 
-class ContactsController extends BaseController
+class ContactListsController extends BaseController
 {
     public function index()
     {
-        return Contact::all();
+        return ContactList::all();
     }
 
     public function store(Request $request)

@@ -48,9 +48,10 @@
                                            class="form-control">
 
                                     <select multiple class="form-control" style="width: 200px;">
-                                        <option>Friend</option>
-                                        <option>Family</option>
-                                        <option>Co-Worker</option>
+
+                                        <option data-ng-repeat="contactList in contacts.contactLists">
+                                            {{ contactList.title }}
+                                        </option>
 
                                     </select>
 
