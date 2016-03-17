@@ -6,6 +6,7 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use DB;
 use \App\ContactList;
+use \App\Contact;
 
 class ContactListsController extends BaseController
 {
@@ -14,18 +15,11 @@ class ContactListsController extends BaseController
         return ContactList::all();
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Contact $contact)
     {
-
-        $contact = new Contact;
-
-        $contact->first_name = $request->first_name;
-        $contact->last_name = $request->last_name;
-        $contact->email = $request->email;
-        $contact->phone = $request->phone;
-
-        $contact->save();
-
+        $list = new ContactList;
+        $list->title = $request->title;
+        $contact->contactLists()->save($list);
     }
 
     public function toggleSoftDelete(Request $request)

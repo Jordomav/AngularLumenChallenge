@@ -19,6 +19,7 @@ class CreateContactsTable extends Migration
             $table->string('email')->unique()->required();
             $table->string('phone')->required();
             $table->boolean('intrash')->default(FALSE);
+
             $table->timestamps();
         });
     }

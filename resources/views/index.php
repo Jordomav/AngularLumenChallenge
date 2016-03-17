@@ -11,14 +11,17 @@
 
 <body>
 <div class="container">
-
-        <h1>Contacts</h1>
-        <hr>
+        <div class="row">
             <div data-ng-app="contactsApp" data-ng-controller="ContactsController as contacts">
-
+                    <h1 class="col-lg-5">Contacts</h1>
+                    <select class="form-control col-lg-4">
+                        <option data-ng-repeat="contactList in contacts.contactLists">
+                            {{contactList.title }}
+                        </option>
+                    </select>
                     <div class="row">
                         <div class="col-xs-12">
-
+                            <hr>
                             <h4>Create a contact</h4>
 
                             <form name="addContactForm" class="form-inline">
@@ -47,12 +50,10 @@
                                            placeholder="Phone"
                                            class="form-control">
 
-                                    <select multiple class="form-control" style="width: 200px;">
-
+                                    <select class="form-control" style="width: 200px;" multiple>
                                         <option data-ng-repeat="contactList in contacts.contactLists">
                                             {{ contactList.title }}
                                         </option>
-
                                     </select>
 
                                     <button data-ng-click="contacts.addContact()" class="btn btn-success">
@@ -75,9 +76,9 @@
                             <th>Date Added</th>
                         </tr>
                         <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.deleted || contact.intrash" class="contact">
-                            <td>{{contact.first_name + ' ' + contact.last_name}}</td>
-                            <td>{{contact.email}}</td>
-                            <td>{{contact.phone}}</td>
+                            <td data-editable-text="contact.first_name + ' ' + contact.last_name">{{contact.first_name + ' ' + contact.last_name}}</td>
+                            <td data-editable-text="contact.email">{{contact.email}}</td>
+                            <td data-editable-text="contact.phone">{{contact.phone}}</td>
                             <td>{{contact.created_at}}</td>
                             <td>
                                 <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
@@ -135,12 +136,13 @@
                 </div>
 
             </div>
+            </div>
 
-</div>
 
 
         <script src="/build/js/deps.js"></script>
         <script src="/build/js/app.js"></script>
+
 
 
 </body>
