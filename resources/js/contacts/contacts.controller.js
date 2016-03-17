@@ -19,7 +19,7 @@
             // Empty lists to hold all contacts.
             vm.contacts = [];
 
-            // Empty list to hold all contact lists
+            // Master list to hold all available contact lists
             vm.contactLists = [];
 
             // Properties to store values from new user form.
@@ -27,6 +27,7 @@
             vm.lastName = '';
             vm.email = '';
             vm.phone = '';
+            vm.listsForNewContact = [];
 
             vm.displayContacts = function () {
 
@@ -59,7 +60,8 @@
                     first_name: vm.firstName,
                     last_name: vm.lastName,
                     email: vm.email,
-                    phone: vm.phone
+                    phone: vm.phone,
+                    lists: vm.listsForNewContact
 
                 })
                     .then( function successCallback (res) {
@@ -69,9 +71,10 @@
                         vm.lastName = '';
                         vm.email = '';
                         vm.phone = '';
+                        vm.listsForNewContact = [];
 
                     }, function errorCallback (res) {
-                        alert.log('There was an error saving the contact.', res);
+                        alert('There was an error saving the contact.');
                     });
             };
 

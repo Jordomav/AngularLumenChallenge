@@ -47,13 +47,16 @@
                                            placeholder="Phone"
                                            class="form-control">
 
-                                    <select multiple class="form-control" style="width: 200px;">
-
-                                        <option data-ng-repeat="contactList in contacts.contactLists">
-                                            {{ contactList.title }}
-                                        </option>
-
-                                    </select>
+                                    <form>
+                                        <select title="contact-lists"
+                                                data-ng-model="contacts.listsForNewContact"
+                                                multiple
+                                                style="width: 200px">
+                                            <option data-ng-repeat="contactList in contacts.contactLists"
+                                                    value="{{ contactList.title }}">{{ contactList.title }}</option>
+                                        </select><br>
+                                        <p class="text-right">multipleSelect = {{contacts.listsForNewContact}}</p>
+                                    </form>
 
                                     <button data-ng-click="contacts.addContact()" class="btn btn-success">
                                         <i class="fa fa-user-plus"></i>

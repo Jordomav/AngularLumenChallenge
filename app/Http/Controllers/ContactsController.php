@@ -23,6 +23,7 @@ class ContactsController extends BaseController
         $contact->last_name = $request->last_name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;
+        $contact->lists = $request->lists;
 
         $contact->save();
 
