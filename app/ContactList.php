@@ -10,13 +10,10 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 class ContactList extends Model
 {
+    protected $database = 'contact_lists';
 
-    public function contactlist(){
-        return $this->hasMany(Contact::class);
-    }
-
-    public function contact()
+    public function contacts()
     {
-        return $this->belongsTo(Contact::class);
+        return $this->belongsToMany(Contact::class);
     }
 }

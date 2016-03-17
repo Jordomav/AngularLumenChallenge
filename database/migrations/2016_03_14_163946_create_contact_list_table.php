@@ -12,7 +12,7 @@ class CreateContactListTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact_list', function (Blueprint $table) {
+        Schema::create('contact_lists', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateContactListTable extends Migration
      */
     public function down()
     {
-        Schema::drop('contact_list');
+        Schema::drop('contact_lists');
     }
 }

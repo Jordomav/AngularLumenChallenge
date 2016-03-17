@@ -19,12 +19,8 @@ class Contact extends Model
         'password',
     ];
 
-    public function contact(){
-        return $this->hasMany(ContactLists::class);
-    }
-
-    public function contactlist()
+    public function contactLists()
     {
-        return $this->belongsTo(ContactLists::class);
+        return $this->belongsToMany(ContactList::class);
     }
 }
