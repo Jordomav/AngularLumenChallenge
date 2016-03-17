@@ -6,5 +6,15 @@
 
     'use strict';
 
+    angular.module('contactsApp')
+        .controller('ContactListsController', function ($http) {
+
+            var vm = this;
+
+            vm.contactLists = [];
+
+            $http.get('')
+        });
+
 
 }());
