@@ -76,7 +76,7 @@
 
 
 
-                    <table class="table roll">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Name</th>
