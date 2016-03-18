@@ -59,17 +59,22 @@
 
             vm.addContact = function () {
 
-                var contact = vm.newContactData();
-                var promise = ContactsService.save(contact);
+                if ( !(_.isEmpty(vm.newContactData())) ) {
 
-                promise.then( function complete() {
-                    vm.displayContacts();
-                    vm.resetContactForm();
+                    console.log(vm.newContactData());
 
-                }, function error(err) {
-                    alert('There was a problem saving the Contact');
-                    console.log(err);
-                });
+                    var contact = vm.newContactData();
+                    var promise = ContactsService.save(contact);
+
+                    promise.then( function complete() {
+                        vm.displayContacts();
+                        vm.resetContactForm();
+
+                    }, function error(err) {
+                        alert('There was a problem saving the Contact');
+                        console.log(err);
+                    });
+                }
             };
 
 
@@ -87,13 +92,24 @@
             };
 
             vm.newContactData = function () {
-                return  {
-                            first_name: vm.firstNameInput,
-                            last_name: vm.lastNameInput,
-                            email: vm.emailInput,
-                            phone: vm.phoneInput,
-                            lists: vm.belongsToListIds
-                        };
+
+                if ( !(_.isEmpty(vm.firstNameInput, vm.lastNameInput, vm.emailInput, vm.phoneInput) )) {
+
+                    console.log('hooray, contact form is filled out');
+
+                    return  {
+                        first_name: vm.firstNameInput,
+                        last_name: vm.lastNameInput,
+                        email: vm.emailInput,
+                        phone: vm.phoneInput,
+                        lists: vm.belongsToListIds
+                    };
+
+                } else {
+                    console.log('empty');
+                    return {};
+                }
+
             };
 
             vm.resetContactForm = function () {
