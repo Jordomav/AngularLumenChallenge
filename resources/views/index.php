@@ -12,6 +12,8 @@
 <body>
 <div class="container">
 
+<!--    TODO: break apart views into angular element directives -->
+
         <h1>Contacts</h1>
         <hr>
             <div data-ng-app="contactsApp" data-ng-controller="ContactsController as contacts">
