@@ -11,8 +11,6 @@
 
             var vm = this;
 
-            vm.contactLists = [];
-
             vm.getContactLists = function () {
                 return $http.get('get-contact-lists');
             };

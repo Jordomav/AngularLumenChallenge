@@ -50,12 +50,13 @@
                                            class="form-control">
 
                                     <form>
-                                        <select title="contact-lists"
+                                        <select data-ng-controller="ContactListsController as lists"
+                                                title="contact-lists"
                                                 data-ng-model="contacts.belongsToListIds"
                                                 multiple
                                                 style="width: 200px">
 
-                                            <option data-ng-repeat="contactList in contacts.contactLists"
+                                            <option data-ng-repeat="contactList in lists.contactLists"
                                                     value="{{ contactList.id }}">
                                                 {{ contactList.title }}
                                             </option>

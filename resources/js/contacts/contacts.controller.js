@@ -7,7 +7,7 @@
     'use strict';
 
     angular.module('contactsApp')
-        .controller('ContactsController', function ($http, ContactsService, ContactListsService) {
+        .controller('ContactsController', function ($http, ContactsService) {
 
             var vm = this;
 
@@ -106,28 +106,9 @@
 
 
             /**
-             *  Contact List Methods
-             */
-            vm.displayContactLists = function () {
-
-                var promise = ContactListsService.getContactLists();
-
-                promise.then( function success(contactLists) {
-
-                    vm.contactLists = contactLists.data;
-
-                }, function errorCallback (err) {
-                    alert('There was an error retrieving Contact Lists');
-                    console.log(err);
-                });
-            };
-
-
-            /**
-             *  Display Contacts and Contact Lists when application starts.
+             *  Display Contacts when application starts.
              */
             vm.displayContacts();
-            vm.displayContactLists();
 
         });
 
