@@ -6,7 +6,6 @@
 
     'use strict';
 
-    // TODO: probably move some functions from ContactsController to here.
     angular.module('contactsApp')
         .service('ContactsService', function ($http) {
 
