@@ -14,10 +14,19 @@
 
             vm.contacts = [];
 
+
             vm.getContacts = function () {
 
                 return $http.get('get-contacts');
             };
+
+
+            vm.save = function (contact) {
+
+                return $http.post('save-contact', contact);
+
+            };
+
 
             vm.delete = function (contacts) {
 

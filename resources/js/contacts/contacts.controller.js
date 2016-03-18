@@ -39,44 +39,35 @@
                 promise.then( function complete(contacts) {
                     vm.contacts = contacts.data;
 
-                     //contact.intrash should be boolean value.
+                    // contact.intrash property should be converted to JS boolean values for ng-show/hide.
+                    // SQLite stores strings '0' and '1' for booleans.
                     _.each(vm.contacts, function (contact) {
                         contact.intrash = !!+contact.intrash;
                     });
 
-                }, function error(error) {
+                }, function error(err) {
                     alert('There was an error retrieving Contacts');
-                    console.log(error);
+                    console.log(err);
                 })
             };
 
+            // Display Contacts when application starts.
             vm.displayContacts();
 
 
-            // Add new Contacts.
             vm.addContact = function () {
+                
+                var contact = vm.newContactData();
+                var promise = ContactsService.save(contact);
 
-                $http.post('save-contact', {
+                promise.then( function complete(res) {
+                    vm.displayContacts();
+                    vm.resetForm();
 
-                    first_name: vm.firstNameInput,
-                    last_name: vm.lastNameInput,
-                    email: vm.emailInput,
-                    phone: vm.phoneInput,
-                    lists: vm.belongsToListIds
-
+                }, function error(err) {
+                    alert('There was a problem saving the Contact');
+                    console.log(err);
                 })
-                    .then( function successCallback (res) {
-                        vm.displayContacts();
-
-                        vm.firstName = '';
-                        vm.lastName = '';
-                        vm.email = '';
-                        vm.phone = '';
-                        vm.listsForNewContact = [];
-
-                    }, function errorCallback (res) {
-                        alert('There was an error saving the contact.');
-                    });
             };
 
 
@@ -93,6 +84,23 @@
                     });
             };
 
+            vm.newContactData = function () {
+                return  {
+                            first_name: vm.firstNameInput,
+                            last_name: vm.lastNameInput,
+                            email: vm.emailInput,
+                            phone: vm.phoneInput,
+                            lists: vm.belongsToListIds
+                        }
+            };
+
+            vm.resetForm = function () {
+                vm.firstNameInput = '';
+                vm.lastNameInput = '';
+                vm.emailInput = '';
+                vm.phoneInput = '';
+                vm.listsForNewContact = [];
+            };
 
 
             /**
