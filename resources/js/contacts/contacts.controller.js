@@ -88,7 +88,6 @@
 
                     }, function errorCallback(res) {
                         alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
-                        console.log(res);
                     });
             };
 
@@ -100,7 +99,6 @@
 
             $http.get('get-contact-lists')
                 .then(function successCallback (res) {
-                    console.log('success');
                     vm.contactLists = res.data;
 
 
