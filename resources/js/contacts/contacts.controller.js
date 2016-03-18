@@ -12,7 +12,7 @@
             var vm = this;
 
             /**
-             * Contact Methods
+             * Contact Variables/Properties
              */
 
             // Empty lists to hold all Contacts.
@@ -28,26 +28,28 @@
             vm.phoneInput = '';
             vm.belongsToListIds = [];
 
+
+            /**
+             *  Contact Methods
+             */
             vm.displayContacts = function () {
 
-                $http.get('get-contacts')
-                    .then(function successCallback(res) {
+                var promise = ContactsService.getContacts();
 
-                        vm.contacts = res.data;
+                promise.then( function complete(contacts) {
+                    vm.contacts = contacts.data;
 
-                        // contact.intrash should be boolean value.
-                        _.each(vm.contacts, function (contact) {
-                            contact.intrash = !!+contact.intrash;
-                        });
-
-                        ContactsService.contacts = vm.contacts;
-
-                    }, function errorCallback(res) {
-                        alert('There was an error retrieving contacts.');
+                     //contact.intrash should be boolean value.
+                    _.each(vm.contacts, function (contact) {
+                        contact.intrash = !!+contact.intrash;
                     });
+
+                }, function error(error) {
+                    alert('There was an error retrieving Contacts');
+                    console.log(error);
+                })
             };
 
-            // Display all current Contacts in the database when page is loaded.
             vm.displayContacts();
 
 

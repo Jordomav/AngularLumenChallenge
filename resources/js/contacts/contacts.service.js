@@ -14,6 +14,11 @@
 
             vm.contacts = [];
 
+            vm.getContacts = function () {
+
+                return $http.get('get-contacts');
+            };
+
             vm.delete = function (contacts) {
 
                 $http.post('delete-contacts', {})
