@@ -15,14 +15,13 @@
              * Contact Methods
              */
 
-
-            // Empty lists to hold all contacts.
+            // Empty lists to hold all Contacts.
             vm.contacts = [];
 
-            // Master list to hold all available contact lists
+            // Master list to hold all available Contact Lists
             vm.contactLists = [];
 
-            // Properties to store values from new user form.
+            // Properties to store values from new Contact form.
             vm.firstNameInput = '';
             vm.lastNameInput = '';
             vm.emailInput = '';
@@ -48,11 +47,11 @@
                     });
             };
 
-            // Display all current contacts in the database when page is loaded.
+            // Display all current Contacts in the database when page is loaded.
             vm.displayContacts();
 
 
-            // Add new contacts.
+            // Add new Contacts.
             vm.addContact = function () {
 
                 $http.post('save-contact', {
@@ -66,7 +65,7 @@
                 })
                     .then( function successCallback (res) {
                         vm.displayContacts();
-                        
+
                         vm.firstName = '';
                         vm.lastName = '';
                         vm.email = '';
