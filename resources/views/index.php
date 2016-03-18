@@ -49,13 +49,17 @@
 
                                     <form>
                                         <select title="contact-lists"
-                                                data-ng-model="contacts.listsForNewContact"
+                                                data-ng-model="contacts.belongsToListIds"
                                                 multiple
                                                 style="width: 200px">
+
                                             <option data-ng-repeat="contactList in contacts.contactLists"
-                                                    value="{{ contactList.title }}">{{ contactList.title }}</option>
+                                                    value="{{ contactList.id }}">
+                                                {{ contactList.title }}
+                                            </option>
+
                                         </select><br>
-                                        <p class="text-right">multipleSelect = {{contacts.listsForNewContact}}</p>
+                                        <p class="text-right">multipleSelect = {{contacts.belongsToListIds}}</p>
                                     </form>
 
                                     <button data-ng-click="contacts.addContact()" class="btn btn-success">

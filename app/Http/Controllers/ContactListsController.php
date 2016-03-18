@@ -24,6 +24,10 @@ class ContactListsController extends BaseController
         $contact->email = $request->email;
         $contact->phone = $request->phone;
 
+        foreach ($request->lists as $list) {
+            $contact->contactLists()->attach($list);
+        }
+
         $contact->save();
 
     }

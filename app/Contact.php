@@ -21,6 +21,6 @@ class Contact extends Model
 
     public function contactLists()
     {
-        return $this->belongsToMany(ContactList::class);
+        return $this->belongsToMany(ContactList::class)->withTimestamps();
     }
 }

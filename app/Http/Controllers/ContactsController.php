@@ -23,10 +23,13 @@ class ContactsController extends BaseController
         $contact->last_name = $request->last_name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;
-        $contact->lists = $request->lists;
 
         $contact->save();
 
+        if ($request->lists) {
+            $contact->contactLists()->attach($request->lists);
+            $contact->save();
+        }
     }
 
     public function toggleSoftDelete(Request $request)

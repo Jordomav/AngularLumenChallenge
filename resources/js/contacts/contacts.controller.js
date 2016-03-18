@@ -27,7 +27,7 @@
             vm.lastName = '';
             vm.email = '';
             vm.phone = '';
-            vm.listsForNewContact = [];
+            vm.belongsToListIds = [];
 
             vm.displayContacts = function () {
 
@@ -61,11 +61,13 @@
                     last_name: vm.lastName,
                     email: vm.email,
                     phone: vm.phone,
-                    lists: vm.listsForNewContact
+                    lists: vm.belongsToListIds
 
                 })
                     .then( function successCallback (res) {
                         vm.displayContacts();
+
+                        console.log(vm.listIds);
 
                         vm.firstName = '';
                         vm.lastName = '';
@@ -103,6 +105,8 @@
                 .then(function successCallback (res) {
                     console.log('success');
                     vm.contactLists = res.data;
+
+
                 }, function errorCallback () {
                     alert('There was an error retrieving Contact Lists');
                 });
