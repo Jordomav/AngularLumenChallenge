@@ -146,7 +146,9 @@
                             <div class="modal-footer">
 
                                 <button data-ng-click="trash.deleteContacts()"
-                                        class="btn btn-danger">
+                                        data-dismiss="modal"
+                                        class="btn btn-danger"
+                                        data-target="#trash-modal">
                                     <i class="fa fa-times"></i>
                                     Take out the trash
                                 </button>
@@ -180,7 +182,7 @@
 
                                 <button data-ng-click="lists.saveContactList()"
                                         data-dismiss="modal"
-                                        class="close btn btn-success"
+                                        class="btn btn-success"
                                         data-target="#contact-list-modal">
                                     Save
                                 </button>
