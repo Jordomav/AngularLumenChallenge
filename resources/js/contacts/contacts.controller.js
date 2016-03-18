@@ -23,10 +23,10 @@
             vm.contactLists = [];
 
             // Properties to store values from new user form.
-            vm.firstName = '';
-            vm.lastName = '';
-            vm.email = '';
-            vm.phone = '';
+            vm.firstNameInput = '';
+            vm.lastNameInput = '';
+            vm.emailInput = '';
+            vm.phoneInput = '';
             vm.belongsToListIds = [];
 
             vm.displayContacts = function () {
@@ -57,18 +57,16 @@
 
                 $http.post('save-contact', {
 
-                    first_name: vm.firstName,
-                    last_name: vm.lastName,
-                    email: vm.email,
-                    phone: vm.phone,
+                    first_name: vm.firstNameInput,
+                    last_name: vm.lastNameInput,
+                    email: vm.emailInput,
+                    phone: vm.phoneInput,
                     lists: vm.belongsToListIds
 
                 })
                     .then( function successCallback (res) {
                         vm.displayContacts();
-
-                        console.log(vm.listIds);
-
+                        
                         vm.firstName = '';
                         vm.lastName = '';
                         vm.email = '';

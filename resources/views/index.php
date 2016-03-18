@@ -24,25 +24,25 @@
                             <form name="addContactForm" class="form-inline">
 
                                     <input name="first_name"
-                                           data-ng-model="contacts.firstName"
+                                           data-ng-model="contacts.firstNameInput"
                                            type="text"
                                            placeholder="First Name"
                                            class="form-control">
 
                                     <input name="last_name"
-                                           data-ng-model="contacts.lastName"
+                                           data-ng-model="contacts.lastNameInput"
                                            type="text"
                                            placeholder="Last Name"
                                            class="form-control">
 
                                     <input name="email"
-                                           data-ng-model="contacts.email"
+                                           data-ng-model="contacts.emailInput"
                                            type="text"
                                            placeholder="Email"
                                            class="form-control">
 
                                     <input name="phone"
-                                           data-ng-model="contacts.phone"
+                                           data-ng-model="contacts.phoneInput"
                                            type="text"
                                            placeholder="Phone"
                                            class="form-control">
