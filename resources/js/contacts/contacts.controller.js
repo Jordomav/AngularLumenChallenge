@@ -7,9 +7,10 @@
     'use strict';
 
     angular.module('contactsApp')
-        .controller('ContactsController', function ($http, ContactsService) {
+        .controller('ContactsController', function ($http, ContactsService, ContactListsService) {
 
             var vm = this;
+
 
             /**
              * Contact Variables/Properties
@@ -52,11 +53,8 @@
                 }, function error(err) {
                     alert('There was an error retrieving Contacts');
                     console.log(err);
-                })
+                });
             };
-
-            // Display Contacts when application starts.
-            vm.displayContacts();
 
 
             vm.addContact = function () {
@@ -66,12 +64,12 @@
 
                 promise.then( function complete() {
                     vm.displayContacts();
-                    vm.resetForm();
+                    vm.resetContactForm();
 
                 }, function error(err) {
                     alert('There was a problem saving the Contact');
                     console.log(err);
-                })
+                });
             };
 
 
@@ -86,7 +84,6 @@
                         function error(err) {
                             alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
                         });
-
             };
 
             vm.newContactData = function () {
@@ -96,10 +93,10 @@
                             email: vm.emailInput,
                             phone: vm.phoneInput,
                             lists: vm.belongsToListIds
-                        }
+                        };
             };
 
-            vm.resetForm = function () {
+            vm.resetContactForm = function () {
                 vm.firstNameInput = '';
                 vm.lastNameInput = '';
                 vm.emailInput = '';
@@ -111,15 +108,26 @@
             /**
              *  Contact List Methods
              */
+            vm.displayContactLists = function () {
 
-            $http.get('get-contact-lists')
-                .then(function successCallback (res) {
-                    vm.contactLists = res.data;
+                var promise = ContactListsService.getContactLists();
 
+                promise.then( function success(contactLists) {
 
-                }, function errorCallback () {
+                    vm.contactLists = contactLists.data;
+
+                }, function errorCallback (err) {
                     alert('There was an error retrieving Contact Lists');
+                    console.log(err);
                 });
+            };
+
+
+            /**
+             *  Display Contacts and Contact Lists when application starts.
+             */
+            vm.displayContacts();
+            vm.displayContactLists();
 
         });
 
