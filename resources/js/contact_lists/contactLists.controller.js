@@ -12,12 +12,14 @@
 
             var vm = this;
 
+
             /**
              *  Contact List Variables/Properties
              */
 
             vm.contactLists = [];
             vm.newList = '';
+
 
             vm.displayContactLists = function () {
 
@@ -33,8 +35,18 @@
                 });
             };
 
-            vm.save = function () {
-                console.log('called')
+
+            vm.saveContactList = function () {
+
+                var promise = ContactListsService.save(vm.newList);
+
+                promise.then( function success() {
+                    vm.displayContactLists();
+                },
+                    function error(err) {
+                        alert('There was a problem saving the Contact List');
+                        console.log(err);
+                    });
             };
 
 

@@ -22,6 +22,6 @@ $app->post('soft-delete', 'ContactsController@toggleSoftDelete');
 $app->post('delete-contacts', 'ContactsController@deleteContacts');
 
 $app->get('get-contact-lists', 'ContactListsController@index');
-$app->post('save-contactlist', 'ContactListsController@store');
-$app->post('retitle-contactlist', 'ContactListsController@retitle');
-$app->post('delete-contactlist', 'ContactListsController@delete');
+$app->post('save-contact-list', 'ContactListsController@store');
+$app->post('retitle-contact-list', 'ContactListsController@retitle');
+$app->post('delete-contact-list', 'ContactListsController@delete');

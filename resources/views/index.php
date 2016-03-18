@@ -178,8 +178,10 @@
                                        title="new-contact-list"
                                        data-ng-model="lists.newList">
 
-                                <button data-ng-click="lists.save()"
-                                        class="btn btn-success">
+                                <button data-ng-click="lists.saveContactList()"
+                                        data-dismiss="modal"
+                                        class="close btn btn-success"
+                                        data-target="#contact-list-modal">
                                     Save
                                 </button>
                             </div>

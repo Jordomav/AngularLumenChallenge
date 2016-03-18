@@ -16,20 +16,9 @@ class ContactListsController extends BaseController
 
     public function store(Request $request)
     {
-
-        $contact = new Contact;
-
-        $contact->first_name = $request->first_name;
-        $contact->last_name = $request->last_name;
-        $contact->email = $request->email;
-        $contact->phone = $request->phone;
-
-        foreach ($request->lists as $list) {
-            $contact->contactLists()->attach($list);
-        }
-
-        $contact->save();
-
+        $list = new ContactList;
+        $list->title = $request->title;
+        $list->save();
     }
 
     public function toggleSoftDelete(Request $request)

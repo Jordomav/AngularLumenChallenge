@@ -15,6 +15,10 @@
                 return $http.get('get-contact-lists');
             };
 
+            vm.save = function (title) {
+                return $http.post('save-contact-list', { title: title });
+            };
+
         });
 
 }());
