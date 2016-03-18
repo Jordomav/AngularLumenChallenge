@@ -21,7 +21,11 @@
             vm.newList = '';
 
 
+
+            // TODO: displayContactLists() is getting called twice on page load.
             vm.displayContactLists = function () {
+
+                console.log('displayContactLists() called');
 
                 var promise = ContactListsService.getContactLists();
 

@@ -176,16 +176,20 @@
 
                             <div class="modal-body">
 
-                                <input type="text"
-                                       title="new-contact-list"
-                                       data-ng-model="lists.newList">
+                                <form id="add-contact-list">
+                                    <input type="text"
+                                           title="new-contact-list"
+                                           data-ng-model="lists.newList">
 
-                                <button data-ng-click="lists.saveContactList()"
-                                        data-dismiss="modal"
-                                        class="btn btn-success"
-                                        data-target="#contact-list-modal">
-                                    Save
-                                </button>
+                                    <button data-ng-click="lists.saveContactList()"
+                                            type="submit"
+                                            data-dismiss="modal"
+                                            class="btn btn-success"
+                                            data-target="#contact-list-modal">
+                                        Save
+                                    </button>
+                                </form>
+
                             </div>
 
                             <div class="modal-footer">
