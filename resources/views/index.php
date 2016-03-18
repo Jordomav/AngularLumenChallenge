@@ -60,8 +60,8 @@
                                                 {{ contactList.title }}
                                             </option>
 
-                                        </select><br>
-                                        <p class="text-right">multipleSelect = {{contacts.belongsToListIds}}</p>
+                                        </select>
+                                        <span><i data-toggle="modal" data-target="#contact-list-modal" class="fa fa-plus-square-o"></i></span>
                                     </form>
 
                                     <button data-ng-click="contacts.addContact()" class="btn btn-success">
@@ -96,15 +96,21 @@
                     </table>
 
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i> Trash</button>
+                <!-- Button trigger trash modal -->
+                <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#trash-modal"><i class="fa fa-trash"></i> Trash</button>
 
-                <!-- Modal -->
-                <div data-ng-controller="TrashModalController as trash" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <!-- Trash modal -->
+                <div data-ng-controller="TrashModalController as trash"
+                     class="modal fade" id="trash-modal"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="myModalLabel">
+
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="myModalLabel">Trash Can</h4>
                             </div>
                             <div class="modal-body">
@@ -117,7 +123,9 @@
                                             <th>Phone</th>
                                             <th>Date Removed</th>
                                         </tr>
-                                        <tr data-ng-repeat="contact in contacts.contacts" data-ng-show="contact.intrash" class="contact">
+                                        <tr data-ng-repeat="contact in contacts.contacts"
+                                            data-ng-show="contact.intrash"
+                                            class="contact">
 
                                             <td>{{ contact.first_name + ' ' + contact.last_name }}</td>
                                             <td>{{ contact.email }}</td>
@@ -125,7 +133,10 @@
                                             <td>{{ contact.updated_at }}</td>
 
                                             <td>
-                                                <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Recover Contact</button>
+                                                <button data-ng-click ="contacts.toggleContactInTrash(contact)"
+                                                        class="btn btn-warning btn-xs"><i class="fa fa-refresh">
+
+                                                    </i> Recover Contact</button>
                                             </td>
                                         </tr>
                                     </thead>
@@ -135,8 +146,45 @@
 
                                 <button data-ng-click="trash.deleteContacts()"
                                         class="btn btn-danger">
-                                    <i class="fa fa-times"></i> Take out the trash
+                                    <i class="fa fa-times"></i>
+                                    Take out the trash
                                 </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Contact List modal -->
+                <div data-ng-controller="ContactListsController as lists"
+                     class="modal fade"
+                     id="contact-list-modal"
+                     tabindex="-1"
+                     role="dialog">
+
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Add Contact List</h4>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <input type="text"
+                                       title="new-contact-list"
+                                       data-ng-model="lists.newList">
+
+                                <button data-ng-click="lists.save()"
+                                        class="btn btn-success">
+                                    Save
+                                </button>
+                            </div>
+
+                            <div class="modal-footer">
+
 
                             </div>
                         </div>
@@ -146,6 +194,7 @@
             </div>
 
 </div>
+
 
 
         <script src="/build/js/deps.js"></script>

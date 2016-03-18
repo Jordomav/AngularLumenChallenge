@@ -7,9 +7,15 @@
     'use strict';
 
     angular.module('contactsApp')
-        .controller('ContactListsController', function ($http) {
+        .controller('ContactListsController', function ($http, ContactListsService) {
 
             var vm = this;
+
+            vm.newList = 'test';
+
+            vm.save = function () {
+                console.log('called')
+            };
 
         });
 
