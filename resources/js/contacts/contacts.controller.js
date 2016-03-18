@@ -45,6 +45,10 @@
                         contact.intrash = !!+contact.intrash;
                     });
 
+                    // Give ContactsService a reference to Contacts, as we use this in the TrashModalController
+                    // `deleteContacts()` method.
+                    ContactsService.contacts = vm.contacts;
+
                 }, function error(err) {
                     alert('There was an error retrieving Contacts');
                     console.log(err);
@@ -56,11 +60,11 @@
 
 
             vm.addContact = function () {
-                
+
                 var contact = vm.newContactData();
                 var promise = ContactsService.save(contact);
 
-                promise.then( function complete(res) {
+                promise.then( function complete() {
                     vm.displayContacts();
                     vm.resetForm();
 
@@ -75,13 +79,14 @@
 
                 contact.intrash = !(contact.intrash);
 
-                $http.post('soft-delete', {id: contact.id})
+                var promise = ContactsService.saveInTrashState(contact);
 
-                    .then(function successCallback(res) {
+                promise.then( function complete() {},
 
-                    }, function errorCallback(res) {
-                        alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
-                    });
+                        function error(err) {
+                            alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
+                        });
+
             };
 
             vm.newContactData = function () {

@@ -27,6 +27,9 @@
 
             };
 
+            vm.saveInTrashState = function (contact) {
+                return $http.post('soft-delete', {id: contact.id});
+            };
 
             vm.delete = function (contacts) {
 
