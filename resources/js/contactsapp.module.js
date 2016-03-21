@@ -6,6 +6,7 @@
 
     'use strict';
 
-    angular.module('contactsApp', ['xeditable']);
+    // TODO: add xeditable service back in.
+    angular.module('contactsApp', []);
 
 }());

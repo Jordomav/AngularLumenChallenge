@@ -49,21 +49,33 @@
                                            placeholder="Phone"
                                            class="form-control">
 
-                                    <form>
-                                        <select data-ng-controller="ContactListsController as lists"
-                                                title="contact-lists"
-                                                data-ng-model="contacts.belongsToListIds"
-                                                multiple
-                                                style="width: 200px">
+<!--                                    <form>-->
+<!--                                        <select data-ng-controller="ContactListsController as lists"-->
+<!--                                                title="contact-lists"-->
+<!--                                                data-ng-model="contacts.belongsToListIds"-->
+<!--                                                multiple-->
+<!--                                                style="width: 200px">-->
+<!---->
+<!--                                            <option data-ng-repeat="contactList in lists.contactLists"-->
+<!--                                                    value="{{ contactList.id }}">-->
+<!--                                                {{ contactList.title }}-->
+<!--                                            </option>-->
+<!---->
+<!--                                        </select>-->
+<!--                                        <span><i data-toggle="modal" data-target="#contact-list-modal" class="fa fa-plus-square-o"></i></span>-->
+<!--                                    </form>-->
 
-                                            <option data-ng-repeat="contactList in lists.contactLists"
-                                                    value="{{ contactList.id }}">
+                                    <div data-ng-controller="ContactListsController as lists"
+                                         class="contact-list-selector form-control"
+                                         data-ng-model="contacts.belongsToListIds">
+
+                                        <div data-ng-click="lists.toggleContactListDropdown()"><i class="fa fa-plus"></i> Add To</div>
+                                        <div data-ng-show="lists.contactListDropdown" class="contact-list-dropdown">
+                                            <div data-ng-repeat="contactList in lists.contactLists">
                                                 {{ contactList.title }}
-                                            </option>
-
-                                        </select>
-                                        <span><i data-toggle="modal" data-target="#contact-list-modal" class="fa fa-plus-square-o"></i></span>
-                                    </form>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <button data-ng-click="contacts.addContact()" class="btn btn-success">
                                         <i class="fa fa-user-plus"></i>
