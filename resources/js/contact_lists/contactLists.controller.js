@@ -59,6 +59,10 @@
                     });
             };
 
+            vm.toggleSelect = function (contactList) {
+                contactList.selected = !(contactList.selected);
+            };
+
 
             /**
              *  Display Contacts when application starts.

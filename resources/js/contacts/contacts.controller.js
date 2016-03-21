@@ -7,7 +7,7 @@
     'use strict';
 
     angular.module('contactsApp')
-        .controller('ContactsController', function ($http, ContactsService) {
+        .controller('ContactsController', function ($http, ContactsService, ContactListsService) {
 
             var vm = this;
 
@@ -111,6 +111,24 @@
                 }
 
             };
+
+            vm.toggleAddListId = function (contactListId) {
+
+                var indexOfId = vm.belongsToListIds.indexOf(contactListId);
+
+                if (indexOfId !== -1) {
+                    vm.belongsToListIds.splice(
+                        indexOfId, indexOfId + 1);
+
+                    return false;
+
+                } else {
+                    vm.belongsToListIds.push(contactListId);
+
+                    return true;
+                }
+            };
+
 
             vm.resetContactForm = function () {
                 vm.firstNameInput = '';

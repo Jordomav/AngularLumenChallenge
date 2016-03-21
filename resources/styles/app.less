@@ -1,4 +1,10 @@
 
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+  cursor: pointer;
+}
+
 .table-hover  {
 
   max-height: 400px;
@@ -17,9 +23,13 @@
     max-height: 270px;
     width: 200px;
     left: 0;
-    top: 36px;
+    top: 32px;
     background-color: white;
     border: 1px solid darkslategray;
     z-index: 999;
+  }
+
+  .selected {
+    background-color: indianred;
   }
 }
