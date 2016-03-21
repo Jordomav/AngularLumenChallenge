@@ -76,7 +76,7 @@
 
 
 
-                    <table class="table table-hover">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -85,7 +85,7 @@
                                 <th>Date Added</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="table-hover">
                             <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.deleted || contact.intrash" class="contact">
                                 <td data-editable-text="contact.first_name + ' ' + contact.last_name">{{contact.first_name + ' ' + contact.last_name}}</td>
                                 <td data-editable-text="contact.email">{{contact.email}}</td>
