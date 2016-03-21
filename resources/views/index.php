@@ -78,22 +78,24 @@
 
                     <table class="table table-hover">
                         <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Date Added</th>
-                        </tr>
-                        <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.deleted || contact.intrash" class="contact">
-                            <td>{{contact.first_name + ' ' + contact.last_name}}</td>
-                            <td>{{contact.email}}</td>
-                            <td>{{contact.phone}}</td>
-                            <td>{{contact.created_at}}</td>
-                            <td>
-                                <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Date Added</th>
+                            </tr>
                         </thead>
+                        <tbody>
+                            <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.deleted || contact.intrash" class="contact">
+                                <td>{{ contact.first_name + ' ' + contact.last_name }}</td>
+                                <td>{{ contact.email }}</td>
+                                <td>{{ contact.phone }}</td>
+                                <td>{{ contact.created_at }}</td>
+                                <td>
+                                    <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
 
 
