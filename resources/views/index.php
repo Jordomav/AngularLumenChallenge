@@ -107,6 +107,9 @@
                                     <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
                                 </td>
                             </tr>
+                            <td  data-ng-if="results.length == 0">
+                                <strong>No results found.</strong>
+                            </>
                         </tbody>
                     </table>
 
