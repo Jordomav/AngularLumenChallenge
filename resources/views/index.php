@@ -79,14 +79,18 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>
+                                    <a href="#" data-ng-click="sortType = 'last_name'; sortReverse = !sortReverse">Name</a>
+                                </th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Date Added</th>
+                                <th>
+                                    <a href="#" data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Date Added</a>
+                                </th>
                             </tr>
                         </thead>
                         <tbody class="table-hover">
-                            <tr data-ng-repeat="contact in contacts.contacts" data-ng-hide="contact.deleted || contact.intrash" class="contact">
+                            <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse" data-ng-hide="contact.deleted || contact.intrash" class="contact">
                                 <td data-editable-text="contact.first_name + ' ' + contact.last_name">{{contact.first_name + ' ' + contact.last_name}}</td>
                                 <td data-editable-text="contact.email">{{contact.email}}</td>
                                 <td data-editable-text="contact.phone">{{contact.phone}}</td>
