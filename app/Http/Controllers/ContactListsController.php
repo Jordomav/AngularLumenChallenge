@@ -6,6 +6,7 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use DB;
 use \App\ContactList;
+use \App\Contact;
 
 class ContactListsController extends BaseController
 {

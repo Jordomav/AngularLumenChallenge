@@ -6,7 +6,6 @@
 
     'use strict';
 
-    angular.module('contactsApp', []);
-
+    angular.module('contactsApp', ['xeditable']);
 
 }());
