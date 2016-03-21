@@ -68,9 +68,7 @@
                                     <div data-ng-controller="ContactListsController as lists"
                                          class="contact-list-selector form-control"
                                          data-ng-model="contacts.belongsToListIds">
-
-                                        <!--  TODO: Add cursor hand for any ng-clicks -->
-
+                                        
                                         <div data-ng-click="lists.toggleContactListDropdown()"><i class="fa fa-plus"></i> Add To</div>
                                         <div data-ng-show="lists.contactListDropdown" class="contact-list-dropdown">
                                             <div data-ng-repeat="contactList in lists.contactLists">
