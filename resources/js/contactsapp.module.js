@@ -6,6 +6,6 @@
 
     'use strict';
 
-    angular.module('contactsApp', ['xeditable']);
+    angular.module('contactsApp', ['xeditable', 'customFilters']);
 
 }());

@@ -3,8 +3,9 @@
  */
 
 (function () {
-    'use strict'
-    .controller('mainController', function($scope) {
+    'use strict';
+    angular.module('sortApp')
+        .controller('mainController', function($scope) {
         $scope.sortType     = 'name'; // set the default sort type
         $scope.sortReverse  = false;  // set the default sort order
     });

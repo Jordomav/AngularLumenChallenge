@@ -24,6 +24,7 @@
     "lodash": "^4.6.1",
     "font-awesome": "^4.5.0",
     "angular-ui": "^0.4.0",
-    "nya-bootstrap-select": "^2.1.5"
+    "nya-bootstrap-select": "^2.1.5",
+    "moment": "^2.12.0"
   }
 }
