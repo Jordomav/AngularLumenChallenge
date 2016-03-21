@@ -80,17 +80,26 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <a href="#" data-ng-click="sortType = 'last_name'; sortReverse = !sortReverse">Name</a>
+                                    <i class="fa fa-angle-down"></i>
+                                    <a href="#" data-ng-click="sortType = 'first_name'; sortReverse = !sortReverse">
+                                        First Name
+                                    </a>
+                                    <a href="#" data-ng-click="sortType = 'last_name'; sortReverse = !sortReverse">
+                                        Last Name
+                                    </a>
                                 </th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>
-                                    <a href="#" data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Date Added</a>
+                                    <a href="#" data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">
+                                        Date Added
+                                    </a>
                                 </th>
+                                <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts">
                             </tr>
                         </thead>
                         <tbody class="table-hover">
-                            <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse" data-ng-hide="contact.deleted || contact.intrash" class="contact">
+                            <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse | filter:q as results" data-ng-hide="contact.deleted || contact.intrash" class="contact">
                                 <td data-editable-text="contact.first_name + ' ' + contact.last_name">{{contact.first_name + ' ' + contact.last_name}}</td>
                                 <td data-editable-text="contact.email">{{contact.email}}</td>
                                 <td data-editable-text="contact.phone">{{contact.phone}}</td>
@@ -124,7 +133,6 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Remove</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
