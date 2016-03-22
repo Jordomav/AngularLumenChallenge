@@ -39,15 +39,17 @@ class ContactsController extends BaseController
         $contact->save();
     }
 
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request)
     {
-        $contact->update($request->all());
-//        The above should work but in case the bellow should work as well
-//        $contact->first_name = $request->first_name;
-//        $contact->last_name = $request->last_name;
-//        $contact->email = $request->email;
-//        $contact->phone = $request->phone;
-//        $contact->save();
+//        $contact = Contact::find($request->id);
+//        $contact->update($request->all());
+        $contact = Contact::find($request->id);
+        $contact->first_name = $request->first_name;
+        $contact->last_name = $request->last_name;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->save();
+
     }
 
     public function deleteContacts()
