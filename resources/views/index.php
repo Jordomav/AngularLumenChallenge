@@ -108,7 +108,7 @@
                             </tr>
                             <td  data-ng-if="results.length == 0">
                                 <strong>No results found.</strong>
-                            </>
+                            </td>
                         </tbody>
                     </table>
 

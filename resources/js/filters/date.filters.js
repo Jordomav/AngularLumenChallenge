@@ -34,7 +34,6 @@
                date[1] = date[1].replace("09", "9");
                date = date.join(' ');
                return date;
-
            }
         });
 }());
