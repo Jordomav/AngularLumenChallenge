@@ -108,43 +108,104 @@
                     </div>
 
 
-
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th>
-                                    <div data-ng-click="contacts.toggleNames()"><i class="fa fa-angle-down"></i>Name</div>
-                                    <div data-ng-show="contacts.nameSort" id="FirstLast">
-                                        <div data-ng-click="sortType = 'first_name'; sortReverse = !sortReverse">
-                                            First Name
-                                        </div>
-                                        <div data-ng-click="sortType = 'last_name'; sortReverse = !sortReverse">
-                                            Last Name
-                                        </div>
+                        <tr>
+                            <th>
+                                <div data-ng-click="contacts.toggleNames()"><i class="fa fa-angle-down"></i>Name</div>
+                                <div data-ng-show="contacts.nameSort" id="FirstLast">
+                                    <div data-ng-click="sortType = 'first_name'; sortReverse = !sortReverse">
+                                        First Name
                                     </div>
+                                    <div data-ng-click="sortType = 'last_name'; sortReverse = !sortReverse">
+                                        Last Name
+                                    </div>
+                                </div>
 
-                                </th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Date Added</th>
-                                <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts">
-                            </tr>
+                            </th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Date Added</th>
+                            <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts">
+                        </tr>
                         </thead>
                         <tbody class="table-hover">
-                            <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse | filter:q as results" data-ng-hide="contact.deleted || contact.intrash" class="contact">
-                                <td data-editable-text="contact.first_name + ' ' + contact.last_name">{{contact.first_name + ' ' + contact.last_name}}</td>
-                                <td data-editable-text="contact.email">{{contact.email}}</td>
-                                <td data-editable-text="contact.phone">{{contact.phone}}</td>
-                                <td>{{contact.updated_at | prettyDate }}</td>
-                                <td>
-                                    <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
-                                </td>
-                            </tr>
-                            <td  data-ng-if="results.length == 0">
-                                <strong>No results found.</strong>
+                        <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse | filter:q as results"
+                            data-ng-hide="contact.deleted || contact.intrash" class="contact">
+
+                            <td>
+                                <!--  First Name -->
+                                <span data-ng-hide="contact.editFirstName"
+                                      data-ng-click="contacts.toggleEdit(contact, 'first_name')">{{ contact.first_name + ' ' }}</span>
+
+                                <span data-ng-show="contact.editFirstName">
+                                    <input data-ng-model="contact.first_name"
+                                           name="first_name" title="first_name" type="text" value="{{ contact.first_name }}">
+                                    <button data-ng-click="contacts.saveEdit(contact, 'first_name')" class="btn btn-xs btn-success">
+                                        <i class="fa fa-check"></i></button>
+                                    <button data-ng-click="contacts.toggleEdit(contact, 'first_name')"
+                                            class="btn btn-xs btn-warning"><i class="fa fa-times"></i></button>
+                                </span>
+
+                                <!-- Last Name -->
+                                <span data-ng-hide="contact.editLastName"
+                                      data-ng-click="contacts.toggleEdit(contact, 'last_name')">{{ contact.last_name }}</span>
+
+                                <span data-ng-show="contact.editLastName">
+                                    <input data-ng-model="contact.last_name"
+                                           name="last_name" title="last_name" type="text" value="{{ contact.last_name }}">
+                                    <button data-ng-click="contacts.saveEdit(contact, 'last_name')"
+                                            class="btn btn-xs btn-success"><i class="fa fa-check"></i></button>
+                                    <button data-ng-click="contacts.toggleEdit(contact, 'last_name')"
+                                            class="btn btn-xs btn-warning"><i class="fa fa-times"></i></button>
+                                </span>
                             </td>
+
+                            <!-- Email -->
+                            <td>
+                                <span data-ng-hide="contact.editEmail"
+                                      data-ng-click="contacts.toggleEdit(contact, 'email')">{{ contact.email }}</span>
+
+                                <span data-ng-show="contact.editEmail">
+                                        <input data-ng-model="contact.email"
+                                               name="email" title="email" type="text" value="{{ contact.email }}">
+                                        <button data-ng-click="contacts.saveEdit(contact, 'email')"
+                                                class="btn btn-xs btn-success"><i class="fa fa-check"></i></button>
+                                        <button data-ng-click="contacts.toggleEdit(contact, 'email')"
+                                                class="btn btn-xs btn-warning"><i class="fa fa-times"></i></button>
+                                </span>
+                            </td>
+
+                            <!-- Phone -->
+                            <td>
+                                <span data-ng-hide="contact.editPhone"
+                                      data-ng-click="contacts.toggleEdit(contact, 'phone')">{{ contact.phone }}</span>
+
+                                <span data-ng-show="contact.editPhone">
+                                        <input data-ng-model="contact.phone"
+                                               name="phone" title="phone" type="text" value="{{ contact.phone }}">
+                                        <button data-ng-click="contacts.saveEdit(contact, 'phone')"
+                                                    class="btn btn-xs btn-success"><i class="fa fa-check"></i></button>
+                                        <button data-ng-click="contacts.toggleEdit(contact, 'phone')"
+                                                class="btn btn-xs btn-warning"><i class="fa fa-times"></i></button>
+                                </span>
+                            </td>
+
+                            <td>{{contact.updated_at | prettyDate }}</td>
+                            <td>
+                                <button data-ng-click ="contacts.toggleContactInTrash(contact)"
+                                        class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+
+                                    Delete Contact
+                                </button>
+                            </td>
+                        </tr>
+                        <tr  data-ng-if="results.length == 0">
+                            <td><strong>No results found.</strong></td>
+                        </tr>
                         </tbody>
                     </table>
+
 
 
                 <!-- Button trigger trash modal -->

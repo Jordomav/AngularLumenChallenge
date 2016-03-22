@@ -159,6 +159,55 @@
                 vm.nameSort = !(vm.nameSort);
             };
 
+
+            /**
+             *  Edit Contact Methods
+             */
+
+            vm.toggleEdit = function (contact, fieldName){
+                switch (fieldName) {
+                    case 'first_name':
+                        contact.editFirstName = !(contact.editFirstName);
+                        break;
+                    case 'last_name':
+                        contact.editLastName = !(contact.editLastName);
+                        break;
+                    case 'email':
+                        contact.editEmail = !(contact.editEmail);
+                        break;
+                    case 'phone':
+                        contact.editPhone = !(contact.editPhone);
+                        break;
+                    default:
+                        alert('Unfortunately, there was an error editing the contact.');
+                }
+            };
+
+            vm.saveEdit = function (contact, fieldName) {
+                console.log(contact);
+                $http.post('update-contact', contact)
+                    .then(function successCallback (res) {
+                        switch (fieldName) {
+                            case 'first_name':
+                                contact.editFirstName = false;
+                                break;
+                            case 'last_name':
+                                contact.editLastName = false;
+                                break;
+                            case 'email':
+                                contact.editEmail = false;
+                                break;
+                            case 'phone':
+                                contact.editPhone = false;
+                                break;
+                        }
+
+                    }, function errorCallback (err){
+                        alert('There was an error updating the contact.');
+                        console.log(err);
+                    });
+            };
+
             /**
              *  Display Contacts when application starts.
              */
