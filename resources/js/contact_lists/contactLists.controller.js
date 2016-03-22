@@ -7,7 +7,7 @@
     'use strict';
 
     angular.module('contactsApp')
-        .controller('ContactListsController', function ($http, ContactListsService) {
+        .controller('ContactListsController', function ($http, $q, ContactListsService) {
 
 
             var vm = this;
@@ -18,6 +18,8 @@
              */
 
             vm.contactLists = [];
+
+            vm.q = '';
 
 
 
@@ -41,6 +43,8 @@
 
             vm.saveContactList = function (list) {
 
+                vm.q = '';
+
                 if ( list == undefined || !(list.trim() === '') ) {
 
                     var promise = ContactListsService.save(list);
@@ -50,6 +54,10 @@
                                 title: list,
                                 selected: true
                             });
+
+                        //$('#contact-list-input').val('');
+
+
 
                         },
                         function error(err) {
@@ -69,6 +77,7 @@
                     console.log(list);
                     vm.newList = '';
                 });
+
                 vm.displayContactLists();
             };
 

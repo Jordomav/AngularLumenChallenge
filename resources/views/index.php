@@ -52,21 +52,6 @@
                                            class="form-control"
                                            required>
 
-<!--                                    <form>-->
-<!--                                        <select data-ng-controller="ContactListsController as lists"-->
-<!--                                                title="contact-lists"-->
-<!--                                                data-ng-model="contacts.belongsToListIds"-->
-<!--                                                multiple-->
-<!--                                                style="width: 200px">-->
-<!---->
-<!--                                            <option data-ng-repeat="contactList in lists.contactLists"-->
-<!--                                                    value="{{ contactList.id }}">-->
-<!--                                                {{ contactList.title }}-->
-<!--                                            </option>-->
-<!---->
-<!--                                        </select>-->
-<!--                                        <span><i data-toggle="modal" data-target="#contact-list-modal" class="fa fa-plus-square-o"></i></span>-->
-<!--                                    </form>-->
 
                                     <div data-ng-controller="ContactListsController as lists"
                                          class="contact-list-selector form-control"
@@ -75,21 +60,24 @@
                                         <div data-ng-click="contacts.toggleContactListMenu()"><i class="fa fa-plus"></i> Add To</div>
                                         <div data-ng-if="contacts.contactListMenu" class="contact-list-dropdown">
                                             <div class="list-input">
-                                                <span><input data-ng-model="q"
-                                                             style="width:200px;"
-                                                             type="text"
-                                                             title="add-contact-list" placeholder="Add New Contact List"
-                                                             required></span>
+                                                <span>
+                                                    <input data-ng-model="lists.q"
+                                                           id="contact-list-input"
+                                                           style="width:200px;"
+                                                           type="text"
+                                                           title="add-contact-list" placeholder="Add New Contact List"
+                                                           required>
+                                                </span>
                                             </div>
                                             <div class="lists">
-                                                <div data-ng-repeat="contactList in lists.contactLists | filter:q as contactlist"
+                                                <div data-ng-repeat="contactList in lists.contactLists | filter:lists.q as filterResult"
                                                      data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
                                                      class="col-xs-12"
                                                      data-ng-class="{ 'selected' : contactList.selected }">
                                                     {{ contactList.title }}
                                                 </div>
-                                                <div data-ng-if="contactlist.length == 0" data-ng-model="lists.newList">
-                                                    <strong data-ng-click="lists.saveContactList(q); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{q}}" could not be found. Click to add.</strong>
+                                                <div data-ng-if="filterResult.length == 0">
+                                                    <strong data-ng-click="lists.saveContactList(lists.q); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{lists.q}}" could not be found. Click to add.</strong>
                                                 </div>
                                             </div>
 
@@ -127,6 +115,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Date Added</th>
+                            <th>Contact Lists</th>
                             <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts">
                         </tr>
                         </thead>
@@ -193,6 +182,9 @@
                             </td>
 
                             <td>{{contact.updated_at | prettyDate }}</td>
+
+                            <td>{{ contacts.contactListPreviewFor(contact) }}</td>
+
                             <td>
                                 <button data-ng-click ="contacts.toggleContactInTrash(contact)"
                                         class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
@@ -200,6 +192,7 @@
                                     Delete Contact
                                 </button>
                             </td>
+
                         </tr>
                         <tr  data-ng-if="results.length == 0">
                             <td><strong>No results found.</strong></td>

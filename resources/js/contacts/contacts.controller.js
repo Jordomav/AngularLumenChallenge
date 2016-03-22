@@ -38,11 +38,14 @@
                 var promise = ContactsService.getContacts();
 
                 promise.then( function complete(contacts) {
+                    console.log(contacts.data);
                     vm.contacts = contacts.data;
+
 
                     // contact.intrash property should be converted to JS boolean values for ng-show/hide.
                     // SQLite stores strings '0' and '1' for booleans.
                     _.each(vm.contacts, function (contact) {
+
                         contact.intrash = !!+contact.intrash;
                     });
 
@@ -56,8 +59,23 @@
                 });
             };
 
+            vm.contactListPreviewFor = function (contact) {
+                if ( !(_.isEmpty(contact.contact_lists) )) {
+                    var output = '';
 
-            vm.addContact = function () {
+                    _.each(contact.contact_lists, function (list) {
+                        output += list.title + ' ';
+                    });
+
+                    if (output.length < 25) {
+                        return output;
+                    } else {
+                        return output.substr(0, 25) + '...';
+                    }
+                }
+            };
+
+                vm.addContact = function () {
 
                 if ( !(_.isEmpty(vm.newContactData())) ) {
 
