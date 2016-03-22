@@ -7,7 +7,7 @@
     'use strict';
 
     angular.module('contactsApp')
-        .controller('ContactsController', function ($http, ContactsService) {
+        .controller('ContactsController', function ($http, ContactsService, ContactListsService) {
 
             var vm = this;
 
@@ -69,6 +69,7 @@
                     promise.then( function complete() {
                         vm.displayContacts();
                         vm.resetContactForm();
+                        vm.closeContactListMenu();
 
                     }, function error(err) {
                         alert('There was a problem saving the Contact');
@@ -112,12 +113,44 @@
 
             };
 
+            vm.toggleAddListId = function (contactListId) {
+
+                var indexOfId = vm.belongsToListIds.indexOf(contactListId);
+
+                if (indexOfId !== -1) {
+                    vm.belongsToListIds.splice(
+                        indexOfId, indexOfId + 1);
+
+                    return false;
+
+                } else {
+                    vm.belongsToListIds.push(contactListId);
+
+                    return true;
+                }
+            };
+
+
             vm.resetContactForm = function () {
                 vm.firstNameInput = '';
                 vm.lastNameInput = '';
                 vm.emailInput = '';
                 vm.phoneInput = '';
-                vm.listsForNewContact = [];
+                vm.belongsToListIds = [];
+            };
+
+
+            /**
+             *  Contact List Dropdown
+             */
+            vm.contactListMenu = false;
+
+            vm.toggleContactListMenu = function () {
+                vm.contactListMenu = ! (vm.contactListMenu);
+            };
+
+            vm.closeContactListMenu = function () {
+                vm.contactListMenu = false;
             };
 
             vm.nameSort = false;

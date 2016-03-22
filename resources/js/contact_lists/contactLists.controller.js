@@ -42,15 +42,36 @@
 
             vm.saveContactList = function () {
 
-                var promise = ContactListsService.save(vm.newList);
+                if ( vm.newList == undefined || !(vm.newList.trim() === '') ) {
 
-                promise.then( function success() {
-                    vm.displayContactLists();
-                },
-                    function error(err) {
-                        alert('There was a problem saving the Contact List');
-                        console.log(err);
-                    });
+                    var promise = ContactListsService.save(vm.newList);
+
+                    promise.then( function success() {
+                            vm.contactLists.push({
+                                title: vm.newList,
+                                selected: true
+                            });
+
+                            vm.newList = '';
+                        },
+                        function error(err) {
+                            alert('There was a problem saving the Contact List');
+                            console.log(err);
+                        });
+                }
+            };
+
+            vm.toggleSelect = function (contactList) {
+                contactList.selected = !(contactList.selected);
+            };
+
+            vm.resetContactLists = function () {
+                _.each(vm.contactLists, function (list) {
+                    list.selected = false;
+                    console.log(list);
+                    vm.newList = '';
+                });
+                vm.displayContactLists();
             };
 
 

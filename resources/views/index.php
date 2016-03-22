@@ -28,43 +28,77 @@
                                            data-ng-model="contacts.firstNameInput"
                                            type="text"
                                            placeholder="First Name"
-                                           class="form-control">
+                                           class="form-control"
+                                           required>
 
                                     <input name="last_name"
                                            data-ng-model="contacts.lastNameInput"
                                            type="text"
                                            placeholder="Last Name"
-                                           class="form-control">
+                                           class="form-control"
+                                           required>
 
                                     <input name="email"
                                            data-ng-model="contacts.emailInput"
                                            type="text"
                                            placeholder="Email"
-                                           class="form-control">
+                                           class="form-control"
+                                           required>
 
                                     <input name="phone"
                                            data-ng-model="contacts.phoneInput"
                                            type="text"
                                            placeholder="Phone"
-                                           class="form-control">
+                                           class="form-control"
+                                           required>
 
-                                    <form>
-                                        <select data-ng-controller="ContactListsController as lists"
-                                                title="contact-lists"
-                                                data-ng-model="contacts.belongsToListIds"
-                                                multiple
-                                                style="width: 200px">
+<!--                                    <form>-->
+<!--                                        <select data-ng-controller="ContactListsController as lists"-->
+<!--                                                title="contact-lists"-->
+<!--                                                data-ng-model="contacts.belongsToListIds"-->
+<!--                                                multiple-->
+<!--                                                style="width: 200px">-->
+<!---->
+<!--                                            <option data-ng-repeat="contactList in lists.contactLists"-->
+<!--                                                    value="{{ contactList.id }}">-->
+<!--                                                {{ contactList.title }}-->
+<!--                                            </option>-->
+<!---->
+<!--                                        </select>-->
+<!--                                        <span><i data-toggle="modal" data-target="#contact-list-modal" class="fa fa-plus-square-o"></i></span>-->
+<!--                                    </form>-->
 
-                                            <option data-ng-repeat="contactList in lists.contactLists"
-                                                    value="{{ contactList.id }}">
-                                                {{ contactList.title }}
-                                            </option>
+                                    <div data-ng-controller="ContactListsController as lists"
+                                         class="contact-list-selector form-control"
+                                         data-ng-model="contacts.belongsToListIds">
 
-                                        </select>
-                                        <span><i data-toggle="modal" data-target="#contact-list-modal" class="fa fa-plus-square-o"></i></span>
-                                    </form>
+                                        <div data-ng-click="contacts.toggleContactListMenu()"><i class="fa fa-plus"></i> Add To</div>
+                                        <div data-ng-if="contacts.contactListMenu" class="contact-list-dropdown">
 
-                                    <button data-ng-click="contacts.addContact()" class="btn btn-success">
+
+                                            <input data-ng-model="lists.newList"
+                                                   type="text"
+                                                   title="add-contact-list" placeholder="Add New Contact List"
+                                                   class="col-xs-10"
+                                                   required>
+                                            <i data-ng-click="lists.saveContactList(); contacts.toggleAddListId(lists.contactLists.length + 1)"
+                                               class="fa fa-plus col-xs-2"></i>
+
+                                            <div class="lists">
+                                                <div data-ng-repeat="contactList in lists.contactLists"
+                                                     data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
+                                                     class="col-xs-12"
+                                                     data-ng-class="{ 'selected' : contactList.selected }">
+                                                    {{ contactList.title }}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <button data-ng-controller="ContactListsController as lists"
+                                            data-ng-click="contacts.addContact(); lists.resetContactLists()"
+                                            class="btn btn-success">
                                         <i class="fa fa-user-plus"></i>
                                            Add
                                     </button>
