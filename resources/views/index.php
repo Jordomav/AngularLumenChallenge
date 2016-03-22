@@ -268,48 +268,6 @@
                     </div>
                 </div>
 
-                <!-- New Contact List modal -->
-                <div data-ng-controller="ContactListsController as lists"
-                     class="modal fade"
-                     id="contact-list-modal"
-                     tabindex="-1"
-                     role="dialog">
-
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Add Contact List</h4>
-                            </div>
-
-                            <div class="modal-body">
-
-                                <form id="add-contact-list">
-                                    <input type="text"
-                                           title="new-contact-list"
-                                           data-ng-model="lists.newList">
-
-                                    <button data-ng-click="lists.saveContactList()"
-                                            type="submit"
-                                            data-dismiss="modal"
-                                            class="btn btn-success"
-                                            data-target="#contact-list-modal">
-                                        Save
-                                    </button>
-                                </form>
-
-                            </div>
-
-                            <div class="modal-footer">
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
 </div>
