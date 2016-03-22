@@ -77,7 +77,8 @@
                                                    type="text"
                                                    title="add-contact-list" placeholder="Add New Contact List"
                                                    class="col-xs-10">
-                                            <i data-ng-click="lists.saveContactList()" class="fa fa-plus col-xs-2"></i>
+                                            <i data-ng-click="lists.saveContactList()"
+                                               class="fa fa-plus col-xs-2"></i>
 
                                             <div class="lists">
                                                 <div data-ng-repeat="contactList in lists.contactLists"

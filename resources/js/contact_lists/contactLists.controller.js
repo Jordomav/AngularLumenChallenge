@@ -51,7 +51,10 @@
                 var promise = ContactListsService.save(vm.newList);
 
                 promise.then( function success() {
-                    vm.displayContactLists();
+                    vm.contactLists.push({
+                        title: vm.newList,
+                        selected: true
+                    })
                 },
                     function error(err) {
                         alert('There was a problem saving the Contact List');
