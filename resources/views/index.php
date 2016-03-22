@@ -68,14 +68,26 @@
                                     <div data-ng-controller="ContactListsController as lists"
                                          class="contact-list-selector form-control"
                                          data-ng-model="contacts.belongsToListIds">
-                                        
+
                                         <div data-ng-click="lists.toggleContactListDropdown()"><i class="fa fa-plus"></i> Add To</div>
                                         <div data-ng-show="lists.contactListDropdown" class="contact-list-dropdown">
-                                            <div data-ng-repeat="contactList in lists.contactLists">
-                                                <p data-ng-click="contacts.toggleAddListId(contactList.id);
-                                                                  lists.toggleSelect(contactList)"
-                                                   data-ng-class="{ 'selected' : contactList.selected }">{{ contactList.title }}</p>
+
+
+                                            <input data-ng-model="lists.newList"
+                                                   type="text"
+                                                   title="add-contact-list" placeholder="Add New Contact List"
+                                                   class="col-xs-10">
+                                            <i data-ng-click="lists.saveContactList()" class="fa fa-plus col-xs-2"></i>
+
+                                            <div class="lists">
+                                                <div data-ng-repeat="contactList in lists.contactLists"
+                                                     data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
+                                                     class="col-xs-12"
+                                                     data-ng-class="{ 'selected' : contactList.selected }">
+                                                    {{ contactList.title }}
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
 
