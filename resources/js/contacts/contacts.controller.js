@@ -136,7 +136,7 @@
                 vm.lastNameInput = '';
                 vm.emailInput = '';
                 vm.phoneInput = '';
-                vm.listsForNewContact = [];
+                vm.belongsToListIds = [];
             };
 
 

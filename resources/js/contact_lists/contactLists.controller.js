@@ -60,6 +60,15 @@
                 contactList.selected = !(contactList.selected);
             };
 
+            vm.resetContactLists = function () {
+                _.each(vm.contactLists, function (list) {
+                    list.selected = false;
+                    console.log(list);
+                    vm.newList = '';
+                });
+                vm.displayContactLists();
+            };
+
 
             /**
              *  Display Contacts when application starts.

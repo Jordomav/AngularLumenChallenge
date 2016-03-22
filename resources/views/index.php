@@ -29,25 +29,29 @@
                                            data-ng-model="contacts.firstNameInput"
                                            type="text"
                                            placeholder="First Name"
-                                           class="form-control">
+                                           class="form-control"
+                                           required>
 
                                     <input name="last_name"
                                            data-ng-model="contacts.lastNameInput"
                                            type="text"
                                            placeholder="Last Name"
-                                           class="form-control">
+                                           class="form-control"
+                                           required>
 
                                     <input name="email"
                                            data-ng-model="contacts.emailInput"
                                            type="text"
                                            placeholder="Email"
-                                           class="form-control">
+                                           class="form-control"
+                                           required>
 
                                     <input name="phone"
                                            data-ng-model="contacts.phoneInput"
                                            type="text"
                                            placeholder="Phone"
-                                           class="form-control">
+                                           class="form-control"
+                                           required>
 
 <!--                                    <form>-->
 <!--                                        <select data-ng-controller="ContactListsController as lists"-->
@@ -70,13 +74,14 @@
                                          data-ng-model="contacts.belongsToListIds">
 
                                         <div data-ng-click="contacts.toggleContactListMenu()"><i class="fa fa-plus"></i> Add To</div>
-                                        <div data-ng-show="contacts.contactListMenu" class="contact-list-dropdown">
+                                        <div data-ng-if="contacts.contactListMenu" class="contact-list-dropdown">
 
 
                                             <input data-ng-model="lists.newList"
                                                    type="text"
                                                    title="add-contact-list" placeholder="Add New Contact List"
-                                                   class="col-xs-10">
+                                                   class="col-xs-10"
+                                                   required>
                                             <i data-ng-click="lists.saveContactList();
                                                               contacts.toggleAddListId(lists.contactLists.length + 1)"
                                                class="fa fa-plus col-xs-2"></i>
@@ -94,7 +99,9 @@
                                         </div>
                                     </div>
 
-                                    <button data-ng-click="contacts.addContact()" class="btn btn-success">
+                                    <button data-ng-controller="ContactListsController as lists"
+                                            data-ng-click="contacts.addContact(); lists.resetContactLists()"
+                                            class="btn btn-success">
                                         <i class="fa fa-user-plus"></i>
                                            Add
                                     </button>
