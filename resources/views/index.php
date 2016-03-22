@@ -135,7 +135,7 @@
                                 <td data-editable-text="contact.first_name + ' ' + contact.last_name">{{contact.first_name + ' ' + contact.last_name}}</td>
                                 <td data-editable-text="contact.email">{{contact.email}}</td>
                                 <td data-editable-text="contact.phone">{{contact.phone}}</td>
-                                <td>{{contact.updated_at | prettyDate}}</td>
+                                <td>{{contact.updated_at | prettyDate }}</td>
                                 <td>
                                     <button data-ng-click ="contacts.toggleContactInTrash(contact)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete Contact</button>
                                 </td>

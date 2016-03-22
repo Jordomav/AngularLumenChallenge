@@ -19,7 +19,6 @@ gulp.task('js-deps', function () {
             './bower_components/angular-ui/angular-ui.js',
             './bower_components/angular-bootstrap/ui-bootstrap.js',
             './bower_components/bootstrap/dist/js/bootstrap.js',
-            './bower_components/bootstrap-select/dist/js/bootstrap-select.js',
             './bower_components/angular-xeditable/dist/js/xeditable.js'
         ])
         .pipe(concat('deps.js'))
