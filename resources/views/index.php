@@ -202,7 +202,7 @@
                             </td>
 
                             <td>{{contact.updated_at | prettyDate }}</td>
-                            <td data-ng-click="">
+                            <td data-target="#listModal" data-toggle="modal">
                                 {{contacts.contactListPreviewFor(contact)}}
                             </td>
                             <td>
@@ -279,6 +279,28 @@
                         </div>
                     </div>
                 </div>
+<!--    CONTACT LIST MODAL-->
+    <div id="listModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Contacts Lists</h4>
+                </div>
+                <div class="modal-body">
+                    <div data-ng-repeat="contacts">
+                        <div>{{contacts.contactLists}}</div>
+                        <button class="btn btn-danger btn-sm"><i class="fa fa-times-circle"> </i> Remove List from Contact</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 
