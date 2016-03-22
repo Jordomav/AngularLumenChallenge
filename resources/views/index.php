@@ -77,12 +77,14 @@
                                                    type="text"
                                                    title="add-contact-list" placeholder="Add New Contact List"
                                                    class="col-xs-10">
-                                            <i data-ng-click="lists.saveContactList()"
+                                            <i data-ng-click="lists.saveContactList();
+                                                              contacts.toggleAddListId(lists.contactLists.length + 1)"
                                                class="fa fa-plus col-xs-2"></i>
 
                                             <div class="lists">
                                                 <div data-ng-repeat="contactList in lists.contactLists"
-                                                     data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
+                                                     data-ng-click="contacts.toggleAddListId(contactList.id);
+                                                                    lists.toggleSelect(contactList)"
                                                      class="col-xs-12"
                                                      data-ng-class="{ 'selected' : contactList.selected }">
                                                     {{ contactList.title }}
