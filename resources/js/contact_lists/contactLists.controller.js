@@ -42,18 +42,21 @@
 
             vm.saveContactList = function () {
 
-                var promise = ContactListsService.save(vm.newList);
+                if ( vm.newList == undefined || !(vm.newList.trim() === '') ) {
+                    console.log(vm.newList);
+                    var promise = ContactListsService.save(vm.newList);
 
-                promise.then( function success() {
-                    vm.contactLists.push({
-                        title: vm.newList,
-                        selected: true
-                    })
-                },
-                    function error(err) {
-                        alert('There was a problem saving the Contact List');
-                        console.log(err);
-                    });
+                    promise.then( function success() {
+                            vm.contactLists.push({
+                                title: vm.newList,
+                                selected: true
+                            });
+                        },
+                        function error(err) {
+                            alert('There was a problem saving the Contact List');
+                            console.log(err);
+                        });
+                }
             };
 
             vm.toggleSelect = function (contactList) {
