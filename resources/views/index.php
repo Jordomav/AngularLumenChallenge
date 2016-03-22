@@ -9,14 +9,22 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container" data-ng-app="contactsApp" data-ng-controller="ContactsController as contacts">
 
 <!--    TODO: break apart views into angular element directives -->
+    <div class="row">
+        <div class="col-xs-2">
+            <h1>Contacts</h1>
+        </div>
+        <form class="col-xs-2 form-inline listControl" data-ng-controller="ContactListsController as lists" >
+            <select class="form-control">
+                <option data-ng-repeat="contactList in lists.contactLists" >{{ contactList.title }}</option>
+            </select>
+        </form>
+        <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts" class="searchContacts col-xs-2"><i class="fa fa-search" style="font-size: 20px; margin-top:33px; margin-left:5px;"></i>
+    </div>
 
-        <h1>Contacts</h1>
-        <hr>
-            <div data-ng-app="contactsApp" data-ng-controller="ContactsController as contacts">
-
+    <hr>
                     <div class="row">
                         <div class="col-xs-12">
 
@@ -76,9 +84,9 @@
                                         <div data-ng-if="contacts.contactListMenu" class="contact-list-dropdown">
                                             <div class="list-input">
                                                 <span><input data-ng-model="q"
-                                                             style="width:200px;"
+                                                             style="width:218px;"
                                                              type="text"
-                                                             title="add-contact-list" placeholder="Add New Contact List"
+                                                             title="add-contact-list" placeholder="Search for Contact-Lists"
                                                              required></span>
                                             </div>
                                             <div class="lists">
@@ -127,7 +135,8 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Date Added</th>
-                            <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts">
+                            <th>Contact Lists</th>
+
                         </tr>
                         </thead>
                         <tbody class="table-hover">
@@ -193,6 +202,9 @@
                             </td>
 
                             <td>{{contact.updated_at | prettyDate }}</td>
+                            <td>
+                                {{contact.contact_list_id[0]}}
+                            </td>
                             <td>
                                 <button data-ng-click ="contacts.toggleContactInTrash(contact)"
                                         class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
