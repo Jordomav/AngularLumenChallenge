@@ -18,7 +18,6 @@
              */
 
             vm.contactLists = [];
-            vm.newList = '';
 
 
 
@@ -40,19 +39,18 @@
             };
 
 
-            vm.saveContactList = function () {
+            vm.saveContactList = function (list) {
 
-                if ( vm.newList == undefined || !(vm.newList.trim() === '') ) {
+                if ( list == undefined || !(list.trim() === '') ) {
 
-                    var promise = ContactListsService.save(vm.newList);
+                    var promise = ContactListsService.save(list);
 
                     promise.then( function success() {
                             vm.contactLists.push({
-                                title: vm.newList,
+                                title: list,
                                 selected: true
                             });
 
-                            vm.newList = '';
                         },
                         function error(err) {
                             alert('There was a problem saving the Contact List');

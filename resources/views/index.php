@@ -89,7 +89,7 @@
                                                     {{ contactList.title }}
                                                 </div>
                                                 <div data-ng-if="contactlist.length == 0" data-ng-model="lists.newList">
-                                                    <strong data-ng-click="lists.saveContactList(); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{q}}" could not be found. Click to add.</strong>
+                                                    <strong data-ng-click="lists.saveContactList(q); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{q}}" could not be found. Click to add.</strong>
                                                 </div>
                                             </div>
 
