@@ -120,6 +120,11 @@
                 vm.listsForNewContact = [];
             };
 
+            vm.nameSort = false;
+
+            vm.toggleNames = function(){
+                vm.nameSort = !(vm.nameSort);
+            };
 
             /**
              *  Display Contacts when application starts.

@@ -79,21 +79,20 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <i class="fa fa-angle-down"></i>
-                                    <a href="#" data-ng-click="sortType = 'first_name'; sortReverse = !sortReverse">
-                                        First Name
-                                    </a>
-                                    <a href="#" data-ng-click="sortType = 'last_name'; sortReverse = !sortReverse">
-                                        Last Name
-                                    </a>
+                                    <div data-ng-click="contacts.toggleNames()"><i class="fa fa-angle-down"></i>Name</div>
+                                    <div data-ng-show="contacts.nameSort" id="FirstLast">
+                                        <div data-ng-click="sortType = 'first_name'; sortReverse = !sortReverse">
+                                            First Name
+                                        </div>
+                                        <div data-ng-click="sortType = 'last_name'; sortReverse = !sortReverse">
+                                            Last Name
+                                        </div>
+                                    </div>
+
                                 </th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>
-                                    <a href="#" data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">
-                                        Date Added
-                                    </a>
-                                </th>
+                                <th data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Date Added</th>
                                 <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts">
                             </tr>
                         </thead>
