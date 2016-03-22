@@ -43,7 +43,7 @@
             vm.saveContactList = function () {
 
                 if ( vm.newList == undefined || !(vm.newList.trim() === '') ) {
-                    console.log(vm.newList);
+
                     var promise = ContactListsService.save(vm.newList);
 
                     promise.then( function success() {
@@ -51,6 +51,8 @@
                                 title: vm.newList,
                                 selected: true
                             });
+
+                            vm.newList = '';
                         },
                         function error(err) {
                             alert('There was a problem saving the Contact List');
