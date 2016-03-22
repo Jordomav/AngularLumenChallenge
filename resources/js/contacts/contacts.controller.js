@@ -56,6 +56,20 @@
                 });
             };
 
+            vm.contactListPreviewFor = function(contact){
+                if (!_.isEmpty(contact.contact_lists)){
+                    var output = '';
+                    _.each(contact.contact_lists, function (list){
+                            output += list.title + ' ';
+                        });
+                    if (output.length < 25){
+                        return output;
+                    }else{
+                        return output.substr(0, 25) + '...';
+                    }
+                }
+
+            };
 
             vm.addContact = function () {
 
