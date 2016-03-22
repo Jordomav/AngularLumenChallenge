@@ -69,8 +69,8 @@
                                          class="contact-list-selector form-control"
                                          data-ng-model="contacts.belongsToListIds">
 
-                                        <div data-ng-click="lists.toggleContactListDropdown()"><i class="fa fa-plus"></i> Add To</div>
-                                        <div data-ng-show="lists.contactListDropdown" class="contact-list-dropdown">
+                                        <div data-ng-click="contacts.toggleContactListMenu()"><i class="fa fa-plus"></i> Add To</div>
+                                        <div data-ng-show="contacts.contactListMenu" class="contact-list-dropdown">
 
 
                                             <input data-ng-model="lists.newList"

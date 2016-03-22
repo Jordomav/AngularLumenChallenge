@@ -69,6 +69,7 @@
                     promise.then( function complete() {
                         vm.displayContacts();
                         vm.resetContactForm();
+                        vm.closeContactListMenu();
 
                     }, function error(err) {
                         alert('There was a problem saving the Contact');
@@ -136,6 +137,20 @@
                 vm.emailInput = '';
                 vm.phoneInput = '';
                 vm.listsForNewContact = [];
+            };
+
+
+            /**
+             *  Contact List Dropdown
+             */
+            vm.contactListMenu = false;
+
+            vm.toggleContactListMenu = function () {
+                vm.contactListMenu = ! (vm.contactListMenu);
+            };
+
+            vm.closeContactListMenu = function () {
+                vm.contactListMenu = false;
             };
 
 

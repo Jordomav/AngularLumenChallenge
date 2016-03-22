@@ -20,12 +20,6 @@
             vm.contactLists = [];
             vm.newList = '';
 
-            vm.contactListDropdown = false;
-
-            vm.toggleContactListDropdown = function () {
-                vm.contactListDropdown = ! (vm.contactListDropdown);
-            };
-
 
 
             // TODO: displayContactLists() is getting called twice on page load.
