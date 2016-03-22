@@ -75,20 +75,21 @@
                                         <div data-ng-click="contacts.toggleContactListMenu()"><i class="fa fa-plus"></i> Add To</div>
                                         <div data-ng-if="contacts.contactListMenu" class="contact-list-dropdown">
                                             <div class="list-input">
-                                                <span><input data-ng-model="lists.newList"
+                                                <span><input data-ng-model="q"
                                                              style="width:200px;"
                                                              type="text"
                                                              title="add-contact-list" placeholder="Add New Contact List"
                                                              required></span>
-                                                <span><i data-ng-click="lists.saveContactList(); contacts.toggleAddListId(lists.contactLists.length + 1)"
-                                                         class="fa fa-plus" style=" "></i></span>
                                             </div>
                                             <div class="lists">
-                                                <div data-ng-repeat="contactList in lists.contactLists"
+                                                <div data-ng-repeat="contactList in lists.contactLists | filter:q as contactlist"
                                                      data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
                                                      class="col-xs-12"
                                                      data-ng-class="{ 'selected' : contactList.selected }">
                                                     {{ contactList.title }}
+                                                </div>
+                                                <div data-ng-if="contactlist.length == 0" data-ng-model="lists.newList">
+                                                    <strong data-ng-click="lists.saveContactList(); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{q}}" could not be found. Click to add.</strong>
                                                 </div>
                                             </div>
 
