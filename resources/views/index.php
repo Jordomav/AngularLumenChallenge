@@ -74,16 +74,15 @@
 
                                         <div data-ng-click="contacts.toggleContactListMenu()"><i class="fa fa-plus"></i> Add To</div>
                                         <div data-ng-if="contacts.contactListMenu" class="contact-list-dropdown">
-
-
-                                            <input data-ng-model="lists.newList"
-                                                   type="text"
-                                                   title="add-contact-list" placeholder="Add New Contact List"
-                                                   class="col-xs-10"
-                                                   required>
-                                            <i data-ng-click="lists.saveContactList(); contacts.toggleAddListId(lists.contactLists.length + 1)"
-                                               class="fa fa-plus col-xs-2"></i>
-
+                                            <div class="list-input">
+                                                <span><input data-ng-model="lists.newList"
+                                                             style="width:200px;"
+                                                             type="text"
+                                                             title="add-contact-list" placeholder="Add New Contact List"
+                                                             required></span>
+                                                <span><i data-ng-click="lists.saveContactList(); contacts.toggleAddListId(lists.contactLists.length + 1)"
+                                                         class="fa fa-plus" style=" "></i></span>
+                                            </div>
                                             <div class="lists">
                                                 <div data-ng-repeat="contactList in lists.contactLists"
                                                      data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
@@ -92,6 +91,7 @@
                                                     {{ contactList.title }}
                                                 </div>
                                             </div>
+
 
                                         </div>
                                     </div>
@@ -132,7 +132,7 @@
                         </thead>
                         <tbody class="table-hover">
                             <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse | filter:q as results" data-ng-hide="contact.deleted || contact.intrash" class="contact">
-                                <td><span data-editable-text="contact.first_name">{{contact.first_name}}</span><span data-editable-text="contact.last_name"> {{contact.last_name}}</span></td>
+                                <td><span data-editable-text="contact.first_name" data-onbeforesave="contacts.updateContact()">{{contact.first_name}}</span><span data-editable-text="contact.last_name"> {{contact.last_name}}</span></td>
                                 <td data-editable-text="contact.email">{{contact.email}}</td>
                                 <td data-editable-text="contact.phone">{{contact.phone}}</td>
                                 <td>{{contact.updated_at | prettyDate }}</td>

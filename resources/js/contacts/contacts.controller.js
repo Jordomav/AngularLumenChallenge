@@ -160,6 +160,15 @@
             };
 
             /**
+             * Edit Contacts and save to database
+             */
+
+            vm.updateUser = function(data){
+                console.log('data');
+                $http.post('update-contact');
+            };
+
+            /**
              *  Display Contacts when application starts.
              */
             vm.displayContacts();
