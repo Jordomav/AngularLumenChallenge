@@ -28,10 +28,12 @@
             vm.emailInput = '';
             vm.phoneInput = '';
             vm.belongsToListIds = [];
-            vm.editedListIds = [];
 
-            // Contact Modal
-            vm.selectedContact = { };
+            // We use selected contact for displaying data in contact list modal.
+            vm.selectedContact = {};
+
+            // List to hold Contact List IDs for edited Contact
+            vm.editedListIds = [];
 
 
             /**
@@ -60,30 +62,40 @@
                 });
             };
 
-            vm.contactListPreviewFor = function(contact){
-                if (!_.isEmpty(contact.contact_lists)){
+
+            vm.contactListPreviewFor = function (contact) {
+                if ( !(_.isEmpty(contact.contact_lists) )) {
                     var output = '';
-                    _.each(contact.contact_lists, function (list){
-                            output += list.title + ' ';
-                        });
-                    if (output.length < 25){
+
+                    // Limit preview to 3 contact lists.
+                    var len = Math.min(3, contact.contact_lists.length);
+
+                    for (var i = 0; i < len; i++) {
+                        if (i < len - 1) {
+                            output += contact.contact_lists[i].title + ', ';
+                        } else {
+                            output += contact.contact_lists[i].title;
+                        }
+                    }
+
+                    // Add elipses if
+                    if (output.length < 25) {
                         return output;
-                    }else{
+                    } else {
                         return output.substr(0, 25) + '...';
                     }
                 }
-
             };
 
-            vm.setSelect = function (contact){
+
+            vm.setSelected = function (contact) {
                 vm.selectedContact = contact;
             };
+
 
             vm.addContact = function () {
 
                 if ( !(_.isEmpty(vm.newContactData())) ) {
-
-                    console.log(vm.newContactData());
 
                     var contact = vm.newContactData();
                     var promise = ContactsService.save(contact);
@@ -114,6 +126,7 @@
                         });
             };
 
+
             vm.newContactData = function () {
 
                 if ( !(_.isEmpty(vm.firstNameInput, vm.lastNameInput, vm.emailInput, vm.phoneInput) )) {
@@ -132,11 +145,10 @@
                     console.log('empty');
                     return {};
                 }
-
             };
 
-            //TODO refactor to consolidate
 
+            //TODO refactor to consolidate toggle add list id functions
             vm.toggleAddListId = function (contactListId) {
 
                 var indexOfId = vm.belongsToListIds.indexOf(contactListId);
@@ -206,7 +218,6 @@
             /**
              *  Edit Contact Methods
              */
-
             vm.toggleEdit = function (contact, fieldName){
                 switch (fieldName) {
                     case 'first_name':
@@ -225,6 +236,7 @@
                         alert('Unfortunately, there was an error editing the contact.');
                 }
             };
+
 
             vm.saveEdit = function (contact, fieldName) {
                 console.log(contact);
@@ -252,16 +264,18 @@
             };
 
             vm.editContactLists = function (){
-                $http.post('update-contact')
+                $http.post('update-contact', {});
             };
+
+
             /**
              * Edit Contacts and save to database
              */
-
             vm.updateUser = function(data){
                 console.log('data');
                 $http.post('update-contact');
             };
+
 
             /**
              *  Display Contacts when application starts.

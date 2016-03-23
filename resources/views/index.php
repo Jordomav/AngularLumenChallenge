@@ -27,7 +27,9 @@
     <hr>
                     <div class="row">
                         <div class="col-xs-12">
+
                             <h4>Create a contact</h4>
+
                             <form name="addContactForm" class="form-inline">
 
                                     <input name="first_name"
@@ -58,22 +60,6 @@
                                            class="form-control"
                                            required>
 
-<!--                                    <form>-->
-<!--                                        <select data-ng-controller="ContactListsController as lists"-->
-<!--                                                title="contact-lists"-->
-<!--                                                data-ng-model="contacts.belongsToListIds"-->
-<!--                                                multiple-->
-<!--                                                style="width: 200px">-->
-<!---->
-<!--                                            <option data-ng-repeat="contactList in lists.contactLists"-->
-<!--                                                    value="{{ contactList.id }}">-->
-<!--                                                {{ contactList.title }}-->
-<!--                                            </option>-->
-<!---->
-<!--                                        </select>-->
-<!--                                        <span><i data-toggle="modal" data-target="#contact-list-modal" class="fa fa-plus-square-o"></i></span>-->
-<!--                                    </form>-->
-
                                     <div data-ng-controller="ContactListsController as lists"
                                          class="contact-list-selector form-control"
                                          data-ng-model="contacts.belongsToListIds">
@@ -81,21 +67,23 @@
                                         <div data-ng-click="contacts.toggleContactListMenu()"><i class="fa fa-plus"></i> Add To</div>
                                         <div data-ng-if="contacts.contactListMenu" class="contact-list-dropdown">
                                             <div class="list-input">
-                                                <span><input data-ng-model="q"
-                                                             style="width:218px;"
-                                                             type="text"
-                                                             title="add-contact-list" placeholder="Search for Contact-Lists"
-                                                             required></span>
+                                                <span>
+                                                    <input data-ng-model="lists.q"
+                                                           id="contact-list-input"
+                                                           style="width:200px;"
+                                                           type="text"
+                                                           title="add-contact-list" placeholder="Add New Contact List">
+                                                </span>
                                             </div>
                                             <div class="lists">
-                                                <div data-ng-repeat="contactList in lists.contactLists | filter:q as contactlist"
+                                                <div data-ng-repeat="contactList in lists.contactLists | filter:lists.q as filterResult"
                                                      data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
                                                      class="col-xs-12"
                                                      data-ng-class="{ 'selected' : contactList.selected }">
                                                     {{ contactList.title }}
                                                 </div>
-                                                <div data-ng-if="contactlist.length == 0" data-ng-model="lists.newList">
-                                                    <strong data-ng-click="lists.saveContactList(q); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{q}}" could not be found. Click to add.</strong>
+                                                <div data-ng-if="filterResult.length == 0">
+                                                    <strong data-ng-click="lists.saveContactList(lists.q); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{lists.q}}" could not be found. Click to add.</strong>
                                                 </div>
                                             </div>
 
@@ -200,7 +188,7 @@
                             </td>
 
                             <td>{{contact.updated_at | prettyDate }}</td>
-                            <td data-target="#listModal" data-toggle="modal" data-ng-click="contacts.setSelect(contact)">
+                            <td data-target="#listModal" data-toggle="modal" data-ng-click="contacts.setSelected(contact)">
                                 {{contacts.contactListPreviewFor(contact)}}
                             </td>
                             <td>
@@ -288,8 +276,8 @@
                 </div>
                 <div class="modal-body">
                     <table class="table-condensed col-xs-2">
-                            <tr data-ng-repeat="list in contacts.selectedContact.contact_lists" class="row">
-                                <td class="col-xs-6">{{list.title}}</td>
+                            <tr data-ng-repeat="contactList in contacts.selectedContact.contact_lists" class="row">
+                                <td class="col-xs-6">{{contactList.title}}</td>
                                 <td class="col-xs-6"><button class="btn btn-danger btn-xs"><i class="fa fa-times-circle"> </i> Remove</button></td>
                             </tr>
                     </table>
@@ -334,7 +322,6 @@
         </div>
     </div>
 </div>
-
 
 
         <script src="/build/js/deps.js"></script>

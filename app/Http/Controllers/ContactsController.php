@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Collection;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 use DB;
 use \App\Contact;
 
@@ -15,7 +15,7 @@ class ContactsController extends BaseController
     {
         $contacts = Contact::all();
         $contactsWithLists = new Collection;
-        foreach ($contacts as $contact){
+        foreach ($contacts as $contact) {
             $contact->ContactLists;
             $contactsWithLists->add($contact);
         }
