@@ -35,6 +35,9 @@
             // List to hold Contact List IDs for edited Contact
             vm.editedListIds = [];
 
+            //Filter Contact Lists
+            vm.selectedContactList = '';
+
 
             /**
              *  Contact Methods

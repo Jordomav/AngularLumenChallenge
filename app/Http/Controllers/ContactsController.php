@@ -65,6 +65,10 @@ class ContactsController extends BaseController
 
     }
 
+    public function removeFromContactList(Request $request){
+
+    }
+
     public function deleteContacts()
     {
         DB::table('contacts')->where('intrash', '1')->delete();

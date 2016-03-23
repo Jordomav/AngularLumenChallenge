@@ -18,8 +18,9 @@
              */
 
             vm.contactLists = [];
-
+            // Allows for contact list input to be saved to the database
             vm.q = '';
+
 
 
 
@@ -78,6 +79,7 @@
 
                 vm.displayContactLists();
             };
+
 
 
             /**
