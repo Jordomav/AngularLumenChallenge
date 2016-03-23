@@ -55,8 +55,6 @@
                                 selected: true
                             });
 
-                        //$('#contact-list-input').val('');
-
 
 
                         },

@@ -65,8 +65,7 @@
                                                            id="contact-list-input"
                                                            style="width:200px;"
                                                            type="text"
-                                                           title="add-contact-list" placeholder="Add New Contact List"
-                                                           required>
+                                                           title="add-contact-list" placeholder="Add New Contact List">
                                                 </span>
                                             </div>
                                             <div class="lists">

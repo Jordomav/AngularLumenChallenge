@@ -14,38 +14,38 @@
                 var date = input.slice(0,10).split('-');
                 date.push(date.shift());
 
-                nameMonth(date);
-                removeLeadingZero(date);
+                var month = getMonthName(parseInt(date[0]) - 1),
+                    day = parseInt(date[1]),
+                    year = parseInt(date[2]),
+                    formattedDate = month + ' ' + day + ', ' + year;
 
-                // Convert back to single string for displaying in view.
-                date = date.join(' ');
-                return date;
+                // Display Today or Yesterday if needed.
+                var today = new Date(),
+                    todayMonth = getMonthName(today.getMonth()),
+                    todayDate = today.getDate(),
+                    todayYear = today.getFullYear();
 
-                function nameMonth(date) {
-                    date[0] = date[0].replace("01", "January,");
-                    date[0] = date[0].replace("02", "February,");
-                    date[0] = date[0].replace("03", "March,");
-                    date[0] = date[0].replace("04", "April,");
-                    date[0] = date[0].replace("05", "May,");
-                    date[0] = date[0].replace("06", "June,");
-                    date[0] = date[0].replace("07", "July,");
-                    date[0] = date[0].replace("08", "August,");
-                    date[0] = date[0].replace("09", "September,");
-                    date[0] = date[0].replace("10", "October,");
-                    date[0] = date[0].replace("11", "November,");
-                    date[0] = date[0].replace("12", "December,");
+                today = todayMonth + ' ' + todayDate + ', ' + todayYear;
+
+                if (formattedDate === today) {
+
+                    formattedDate = 'Today';
+
+                } else if (month === todayMonth && year === todayYear) {
+                    if (todayDate - day === 1) {
+                        formattedDate = 'Yesterday';
+                    }
                 }
 
-                function removeLeadingZero(date) {
-                    date[1] = date[1].replace("01", "1");
-                    date[1] = date[1].replace("02", "2");
-                    date[1] = date[1].replace("03", "3");
-                    date[1] = date[1].replace("04", "4");
-                    date[1] = date[1].replace("05", "5");
-                    date[1] = date[1].replace("06", "6");
-                    date[1] = date[1].replace("07", "7");
-                    date[1] = date[1].replace("08", "8");
-                    date[1] = date[1].replace("09", "9");
+                
+                return formattedDate;
+
+
+                function getMonthName(monthNumber) {
+                    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                        'July', 'August', 'September', 'October', 'November', 'December'];
+
+                    return monthNames[monthNumber];
                 }
             };
         });
