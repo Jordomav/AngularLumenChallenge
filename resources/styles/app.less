@@ -14,12 +14,12 @@
   padding-left: -600px;
 }
 
-.table-hover  {
-  max-height: 400px;
-
-  tbody tr:hover {
-    background-color: #d2d294;
-  }
+#scroll {
+  max-height: 200px !important;
+  overflow: scroll;
+}
+tbody>tr:hover {
+  background-color: #ff6666;
 }
 
 .contact-list-selector {
@@ -63,4 +63,22 @@ td, span {
   padding:5px;
   border: 1px solid;
   background-color: white;
+}
+.contactListSelect{
+  max-height: 250px;
+  width: 218px;
+  border: 1px black solid;
+
+  .lists2 {
+    max-height: 200px;
+    background-color: white;
+    width: 100%;
+    overflow: auto;
+
+    border-top: none;
+  }
+
+}
+.select-input{
+  position: fixed;
 }

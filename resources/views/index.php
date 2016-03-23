@@ -117,7 +117,7 @@
                     </div>
 
 
-                    <table class="table">
+                    <table class="table" id="scroll">
                         <thead>
                         <tr>
                             <th>
@@ -202,7 +202,7 @@
                             </td>
 
                             <td>{{contact.updated_at | prettyDate }}</td>
-                            <td data-target="#listModal" data-toggle="modal">
+                            <td data-target="#listModal" data-toggle="modal" data-ng-click="contacts.setSelect(contact)">
                                 {{contacts.contactListPreviewFor(contact)}}
                             </td>
                             <td>
@@ -289,10 +289,43 @@
                     <h4 class="modal-title">Contacts Lists</h4>
                 </div>
                 <div class="modal-body">
-                    <div data-ng-repeat="contacts">
-                        <div>{{contacts.contactLists}}</div>
-                        <button class="btn btn-danger btn-sm"><i class="fa fa-times-circle"> </i> Remove List from Contact</button>
+                    <table class="table-condensed col-xs-2">
+                            <tr data-ng-repeat="list in contacts.selectedContact.contact_lists" class="row">
+                                <td class="col-xs-6">{{list.title}}</td>
+                                <td class="col-xs-6"><button class="btn btn-danger btn-xs"><i class="fa fa-times-circle"> </i> Remove</button></td>
+                            </tr>
+                    </table>
+                    <div class="container">
+                        <div data-ng-controller="ContactListsController as lists"
+                             class="contact-list-selector col-xs-2"
+                             data-ng-model="contacts.belongsToListIds">
+
+
+                            <div class="contactListSelect">
+                                <div class="list-input">
+                                <span><input data-ng-model="q"
+                                             style="width:218px;"
+                                             type="text"
+                                             title="add-contact-list" placeholder="Search for Contact-Lists"
+                                             required></span>
+                                </div>
+                                <div class="lists2">
+                                    <div data-ng-repeat="contactList in lists.contactLists | filter:q as contactlist"
+                                         data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
+                                         class="col-xs-12"
+                                         data-ng-class="{ 'selected' : contactList.selected }">
+                                        {{ contactList.title }}
+                                    </div>
+                                    <div data-ng-if="contactlist.length == 0" data-ng-model="lists.newList">
+                                        <strong data-ng-click="lists.saveContactList(q); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{q}}" could not be found. Click to add.</strong>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

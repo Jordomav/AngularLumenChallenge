@@ -71,6 +71,10 @@
 
             };
 
+            vm.setSelect = function (contact){
+                vm.selectedContact = contact;
+            };
+
             vm.addContact = function () {
 
                 if ( !(_.isEmpty(vm.newContactData())) ) {
