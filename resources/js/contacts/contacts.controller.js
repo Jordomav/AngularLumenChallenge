@@ -114,6 +114,14 @@
                 vm.selectedContact = contact;
             };
 
+            vm.belongsTo = function (contactList) {
+                _.each(vm.selectedContact.contact_lists, function (list) {
+                    if (list.id === contactList.id) {
+                        //list.selected = true;
+                        contactList.selected = true;
+                    }
+                });
+            };
 
             vm.addContact = function () {
 
@@ -179,32 +187,46 @@
                     vm.belongsToListIds.splice(
                         indexOfId, indexOfId + 1);
 
-                    return false;
-
                 } else {
                     vm.belongsToListIds.push(contactListId);
-
-                    return true;
                 }
             };
 
-            vm.toggleEditedListId = function(contactListId){
-                for (var i = 0; i < vm.selectedContact.contact_lists.length; i++){
-                    vm.editedListIds.push(vm.selectedContact.contact_lists[i].id);
-                    vm.selectedContact.contact_lists[i].selected = true;
-                }
-                console.log(vm.editedListIds, vm.selectedContact);
+
+            vm.initContactListModal = function (contactLists) {
+
+                vm.availableLists = contactLists;
+
+                _.each(vm.availableLists, function (availableList) {
+
+                    availableList.hide = false;
+
+                    _.each(vm.selectedContact.contact_lists, function (belongsToList) {
+                        if (belongsToList.id === availableList.id) {
+                            availableList.hide = true;
+                        }
+                    });
+                });
+            };
+
+
+            vm.toggleEditedListId = function (contactListId){
+
                 var indexOfId = vm.editedListIds.indexOf(contactListId);
 
                 if (indexOfId !== -1) {
+
                     vm.editedListIds.splice(
                         indexOfId, indexOfId + 1);
+
+                    console.log(vm.editedListIds);
 
                 } else {
                     vm.editedListIds.push(contactListId);
 
+                    console.log(vm.editedListIds);
                 }
-                console.log(vm.editedListIds)
+
             };
 
 

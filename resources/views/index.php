@@ -35,6 +35,7 @@
 
                             <form name="addContactForm" class="form-inline">
 
+
                                     <input name="first_name"
                                            data-ng-model="contacts.firstNameInput"
                                            type="text"
@@ -106,7 +107,7 @@
                     </div>
 
 
-                    <table class="table" id="scroll">
+                    <table class="table" id="scroll" data-ng-controller="ContactListsController as lists">
                         <thead>
                         <tr>
                             <th>
@@ -191,7 +192,7 @@
                             </td>
 
                             <td>{{contact.updated_at | prettyDate }}</td>
-                            <td data-target="#listModal" data-toggle="modal" data-ng-click="contacts.setSelected(contact)">
+                            <td data-target="#listModal" data-toggle="modal" data-ng-click="contacts.setSelected(contact); contacts.initContactListModal(lists.contactLists)">
                                 {{contacts.contactListPreviewFor(contact)}}
                             </td>
                             <td>
@@ -268,6 +269,7 @@
                         </div>
                     </div>
                 </div>
+
 <!--    CONTACT LIST MODAL-->
     <div id="listModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -304,13 +306,15 @@
                                              required></span>
                                 </div>
                                 <div class="lists2">
-                                    <div data-ng-repeat="contactList in lists.contactLists | filter:q as contactlist"
-                                         data-ng-click="contacts.toggleEditedListId(contactList.id); lists.toggleSelect(contactList)"
+                                    <div data-ng-repeat="contactList in contacts.availableLists | filter:q as contactlist"
+                                         data-ng-hide="contactList.hide === true"
+                                         data-ng-click="contacts.toggleEditedListId(contactList.id, lists.contactLists); lists.toggleSelect(contactList)"
                                          class="col-xs-12"
-                                         data-ng-class="{ 'selected' : contactList.selected }">
+
+                                         data-ng-class="{ 'selected' : contacts.belongsTo(contactList) }">
                                         {{ contactList.title }}
                                     </div>
-                                    <div data-ng-if="contactlist.length == 0" data-ng-model="lists.newList">
+                                    <div data-ng-if="contactlist.length === 0" data-ng-model="lists.newList">
                                         <strong data-ng-click="lists.saveContactList(q); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{q}}" could not be found. Click to add.</strong>
                                     </div>
                                 </div>
