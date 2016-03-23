@@ -35,6 +35,9 @@
             // List to hold Contact List IDs for edited Contact
             vm.editedListIds = [];
 
+            // Property to hold selected contact list for displaying contacts one list at a time.
+            vm.selectedContactList = {id: 1};
+
 
             /**
              *  Contact Methods
@@ -85,6 +88,25 @@
                         return output.substr(0, 25) + '...';
                     }
                 }
+            };
+
+            vm.displaySelectedContactList = function (selectedList) {
+
+                var hideState = false;
+
+                _.each(vm.contacts, function (contact) {
+                    if (contact.contact_lists.length > 0) {
+
+                        _.some(contact.contact_lists, function (list) {
+                            if (list.id === selectedList.id) {
+                                hideState = false;
+                            }
+                        });
+                    } else {
+                        hideState = true;
+                    }
+                    contact.hide = hideState;
+                });
             };
 
 

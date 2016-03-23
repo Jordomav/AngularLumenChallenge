@@ -16,10 +16,13 @@
         <div class="col-xs-2">
             <h1>Contacts</h1>
         </div>
-        <form class="col-xs-2 form-inline listControl" data-ng-controller="ContactListsController as lists" >
-            <select class="form-control">
-                <option data-ng-repeat="contactList in lists.contactLists">{{ contactList.title }}</option>
+        <form class="col-xs-2 form-inline listControl" data-ng-controller="ContactListsController as lists">
+
+            <select data-ng-options="list.title for list in lists.contactLists track by list.id"
+                    data-ng-model="contacts.selectedContactList"
+                    data-ng-change="contacts.displaySelectedContactList(contacts.selectedContactList)">
             </select>
+
         </form>
         <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts" class="searchContacts col-xs-2"><i class="fa fa-search" style="font-size: 20px; margin-top:33px; margin-left:5px;"></i>
     </div>
@@ -127,7 +130,7 @@
                         </thead>
                         <tbody class="table-hover">
                         <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse | filter:q as results"
-                            data-ng-hide="contact.deleted || contact.intrash" class="contact">
+                            data-ng-hide="contact.deleted || contact.intrash || contact.hide" class="contact">
 
                             <td>
                                 <!--  First Name -->

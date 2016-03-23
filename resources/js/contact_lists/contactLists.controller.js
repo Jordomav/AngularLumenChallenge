@@ -53,8 +53,6 @@
                                 selected: true
                             });
 
-
-
                         },
                         function error(err) {
                             alert('There was a problem saving the Contact List');
