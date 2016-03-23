@@ -278,7 +278,12 @@
                     <table class="table-condensed col-xs-2">
                             <tr data-ng-repeat="contactList in contacts.selectedContact.contact_lists" class="row">
                                 <td class="col-xs-6">{{contactList.title}}</td>
-                                <td class="col-xs-6"><button class="btn btn-danger btn-xs"><i class="fa fa-times-circle"> </i> Remove</button></td>
+                                <td class="col-xs-6">
+                                    <button data-ng-click="contacts.removeFromContactList(contactList.id)" class="btn btn-danger btn-xs">
+                                        <i class="fa fa-times-circle"> </i>
+                                        Remove
+                                    </button>
+                                </td>
                             </tr>
                     </table>
                     <div class="container">

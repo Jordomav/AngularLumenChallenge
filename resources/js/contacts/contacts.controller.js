@@ -267,6 +267,22 @@
                 $http.post('update-contact', {});
             };
 
+            vm.removeFromContactList = function(contactListId) {
+                //_.each(vm.selectedContact.contact_lists, function (list) {
+                //    if (contactListId === list.id) {
+                //        vm.selectedContacts.
+                //    }
+                //})
+
+                console.log('before', vm.selectedContact.contact_lists);
+
+                _.remove(vm.selectedContact.contact_lists, function (list) {
+                    return list.id === contactListId;
+                });
+
+                console.log('after', vm.selectedContact.contact_lists);
+            };
+
 
             /**
              * Edit Contacts and save to database
