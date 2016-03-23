@@ -23,7 +23,6 @@
 
 
 
-
             // TODO: displayContactLists() is getting called twice on page load.
             vm.displayContactLists = function () {
 
@@ -55,9 +54,6 @@
                                 title: list,
                                 selected: true
                             });
-
-
-
                         },
                         function error(err) {
                             alert('There was a problem saving the Contact List');

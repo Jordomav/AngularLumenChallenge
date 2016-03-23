@@ -16,9 +16,11 @@
         <div class="col-xs-2">
             <h1>Contacts</h1>
         </div>
-        <form class="col-xs-2 form-inline listControl" data-ng-controller="ContactListsController as lists" >
-            <select class="form-control">
-                    <option data-ng-model="contacts.selectedContactList" data-ng-repeat="contactList in lists.contactLists" value="{{contactList.id}}">{{ contactList.title }}</option>
+        <form class="col-xs-2 form-inline listControl" data-ng-controller="ContactListsController as lists">
+
+            <select data-ng-options="list.title for list in lists.contactLists track by list.id"
+                    data-ng-model="contacts.selectedContactList"
+                    data-ng-change="contacts.displaySelectedContactList(contacts.selectedContactList)">
             </select>
         </form>
 
@@ -128,7 +130,7 @@
                         </thead>
                         <tbody class="table-hover">
                         <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse | filter:q as results"
-                            data-ng-hide="contact.deleted || contact.intrash || contacts.hide" class="contact">
+                            data-ng-hide="contact.deleted || contact.intrash || contact.hide" class="contact">
 
                             <td>
                                 <!--  First Name -->
@@ -279,7 +281,12 @@
                     <table class="table-condensed col-xs-2">
                             <tr data-ng-repeat="contactList in contacts.selectedContact.contact_lists" class="row">
                                 <td class="col-xs-6">{{contactList.title}}</td>
-                                <td class="col-xs-6"><button class="btn btn-danger btn-xs"><i class="fa fa-times-circle"> </i> Remove</button></td>
+                                <td class="col-xs-6">
+                                    <button data-ng-click="contacts.removeFromContactList(contactList.id)" class="btn btn-danger btn-xs">
+                                        <i class="fa fa-times-circle"> </i>
+                                        Remove
+                                    </button>
+                                </td>
                             </tr>
                     </table>
                     <div class="container">

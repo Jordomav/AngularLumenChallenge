@@ -35,8 +35,8 @@
             // List to hold Contact List IDs for edited Contact
             vm.editedListIds = [];
 
-            //Filter Contact Lists
-            vm.selectedContactList = '';
+            // Property to hold selected contact list for displaying contacts one list at a time.
+            vm.selectedContactList = {id: 1};
 
 
             /**
@@ -88,6 +88,25 @@
                         return output.substr(0, 25) + '...';
                     }
                 }
+            };
+
+            vm.displaySelectedContactList = function (selectedList) {
+
+                var hideState = false;
+
+                _.each(vm.contacts, function (contact) {
+                    if (contact.contact_lists.length > 0) {
+
+                        _.some(contact.contact_lists, function (list) {
+                            if (list.id === selectedList.id) {
+                                hideState = false;
+                            }
+                        });
+                    } else {
+                        hideState = true;
+                    }
+                    contact.hide = hideState;
+                });
             };
 
 
@@ -268,6 +287,19 @@
 
             vm.editContactLists = function (){
                 $http.post('update-contact', {});
+            };
+
+            vm.removeFromContactList = function(contactListId) {
+
+                $http.post('remove-from-contact-list', {
+                    contact_id: vm.selectedContact.id,
+                    contact_list_id: contactListId
+                });
+
+                _.remove(vm.selectedContact.contact_lists, function (list) {
+                    return list.id === contactListId;
+                });
+
             };
 
 
