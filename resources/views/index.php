@@ -18,7 +18,7 @@
         </div>
         <form class="col-xs-2 form-inline listControl" data-ng-controller="ContactListsController as lists" >
             <select class="form-control">
-                <option data-ng-repeat="contactList in lists.contactLists" >{{ contactList.title }}</option>
+                <option data-ng-repeat="contactList in lists.contactLists" data-ng-show="contactList">{{ contactList.title }}</option>
             </select>
         </form>
         <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts" class="searchContacts col-xs-2"><i class="fa fa-search" style="font-size: 20px; margin-top:33px; margin-left:5px;"></i>
@@ -298,7 +298,7 @@
                     <div class="container">
                         <div data-ng-controller="ContactListsController as lists"
                              class="contact-list-selector col-xs-2"
-                             data-ng-model="contacts.belongsToListIds">
+                             data-ng-model="contacts.editedListIds">
 
 
                             <div class="contactListSelect">
@@ -311,7 +311,7 @@
                                 </div>
                                 <div class="lists2">
                                     <div data-ng-repeat="contactList in lists.contactLists | filter:q as contactlist"
-                                         data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
+                                         data-ng-click="contacts.toggleEditedListId(contactList.id); lists.toggleSelect(contactList)"
                                          class="col-xs-12"
                                          data-ng-class="{ 'selected' : contactList.selected }">
                                         {{ contactList.title }}
@@ -328,7 +328,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" data-ng-click=""><i class="fa fa-pencil"></i> Update Contact</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle-o"></i> Cancel</button>
                 </div>
             </div>
 

@@ -28,6 +28,10 @@
             vm.emailInput = '';
             vm.phoneInput = '';
             vm.belongsToListIds = [];
+            vm.editedListIds = [];
+
+            // Contact Modal
+            vm.selectedContact = { };
 
 
             /**
@@ -131,6 +135,8 @@
 
             };
 
+            //TODO refactor to consolidate
+
             vm.toggleAddListId = function (contactListId) {
 
                 var indexOfId = vm.belongsToListIds.indexOf(contactListId);
@@ -146,6 +152,25 @@
 
                     return true;
                 }
+            };
+
+            vm.toggleEditedListId = function(contactListId){
+                for (var i = 0; i < vm.selectedContact.contact_lists.length; i++){
+                    vm.editedListIds.push(vm.selectedContact.contact_lists[i].id);
+                    vm.selectedContact.contact_lists[i].selected = true;
+                }
+                console.log(vm.editedListIds, vm.selectedContact);
+                var indexOfId = vm.editedListIds.indexOf(contactListId);
+
+                if (indexOfId !== -1) {
+                    vm.editedListIds.splice(
+                        indexOfId, indexOfId + 1);
+
+                } else {
+                    vm.editedListIds.push(contactListId);
+
+                }
+                console.log(vm.editedListIds)
             };
 
 
@@ -226,6 +251,9 @@
                     });
             };
 
+            vm.editContactLists = function (){
+                $http.post('update-contact')
+            };
             /**
              * Edit Contacts and save to database
              */
