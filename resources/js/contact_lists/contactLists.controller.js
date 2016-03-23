@@ -16,11 +16,9 @@
             /**
              *  Contact List Variables/Properties
              */
-
             vm.contactLists = [];
 
             vm.q = '';
-
 
 
             // TODO: displayContactLists() is getting called twice on page load.
