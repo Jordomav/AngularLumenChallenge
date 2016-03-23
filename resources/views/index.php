@@ -9,14 +9,22 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container" data-ng-app="contactsApp" data-ng-controller="ContactsController as contacts">
 
 <!--    TODO: break apart views into angular element directives -->
+    <div class="row">
+        <div class="col-xs-2">
+            <h1>Contacts</h1>
+        </div>
+        <form class="col-xs-2 form-inline listControl" data-ng-controller="ContactListsController as lists" >
+            <select class="form-control">
+                <option data-ng-repeat="contactList in lists.contactLists" data-ng-model="q">{{ contactList.title }}</option>
+            </select>
+        </form>
+        <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts" class="searchContacts col-xs-2"><i class="fa fa-search" style="font-size: 20px; margin-top:33px; margin-left:5px;"></i>
+    </div>
 
-        <h1>Contacts</h1>
-        <hr>
-            <div data-ng-app="contactsApp" data-ng-controller="ContactsController as contacts">
-
+    <hr>
                     <div class="row">
                         <div class="col-xs-12">
 
@@ -51,7 +59,6 @@
                                            placeholder="Phone"
                                            class="form-control"
                                            required>
-
 
                                     <div data-ng-controller="ContactListsController as lists"
                                          class="contact-list-selector form-control"
@@ -96,7 +103,7 @@
                     </div>
 
 
-                    <table class="table">
+                    <table class="table" id="scroll">
                         <thead>
                         <tr>
                             <th>
@@ -115,7 +122,7 @@
                             <th>Phone</th>
                             <th data-ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Date Added</th>
                             <th>Contact Lists</th>
-                            <input type="text" data-ng-model="q" placeholder="Search for contacts..." aria-label="filter contacts">
+
                         </tr>
                         </thead>
                         <tbody class="table-hover">
@@ -181,9 +188,9 @@
                             </td>
 
                             <td>{{contact.updated_at | prettyDate }}</td>
-
-                            <td>{{ contacts.contactListPreviewFor(contact) }}</td>
-
+                            <td data-target="#listModal" data-toggle="modal" data-ng-click="contacts.setSelected(contact)">
+                                {{contacts.contactListPreviewFor(contact)}}
+                            </td>
                             <td>
                                 <button data-ng-click ="contacts.toggleContactInTrash(contact)"
                                         class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
@@ -191,7 +198,6 @@
                                     Delete Contact
                                 </button>
                             </td>
-
                         </tr>
                         <tr  data-ng-if="results.length == 0">
                             <td><strong>No results found.</strong></td>
@@ -259,9 +265,62 @@
                         </div>
                     </div>
                 </div>
+<!--    CONTACT LIST MODAL-->
+    <div id="listModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Contacts Lists</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table-condensed col-xs-2">
+                            <tr data-ng-repeat="contactList in contacts.selectedContact.contact_lists" class="row">
+                                <td class="col-xs-6">{{contactList.title}}</td>
+                                <td class="col-xs-6"><button class="btn btn-danger btn-xs"><i class="fa fa-times-circle"> </i> Remove</button></td>
+                            </tr>
+                    </table>
+                    <div class="container">
+                        <div data-ng-controller="ContactListsController as lists"
+                             class="contact-list-selector col-xs-2"
+                             data-ng-model="contacts.editedListIds">
 
+
+                            <div class="contactListSelect">
+                                <div class="list-input">
+                                <span><input data-ng-model="q"
+                                             style="width:218px;"
+                                             type="text"
+                                             title="add-contact-list" placeholder="Search for Contact-Lists"
+                                             required></span>
+                                </div>
+                                <div class="lists2">
+                                    <div data-ng-repeat="contactList in lists.contactLists | filter:q as contactlist"
+                                         data-ng-click="contacts.toggleEditedListId(contactList.id); lists.toggleSelect(contactList)"
+                                         class="col-xs-12"
+                                         data-ng-class="{ 'selected' : contactList.selected }">
+                                        {{ contactList.title }}
+                                    </div>
+                                    <div data-ng-if="contactlist.length == 0" data-ng-model="lists.newList">
+                                        <strong data-ng-click="lists.saveContactList(q); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{q}}" could not be found. Click to add.</strong>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" data-ng-click=""><i class="fa fa-pencil"></i> Update Contact</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle-o"></i> Cancel</button>
+                </div>
             </div>
 
+        </div>
+    </div>
 </div>
 
 

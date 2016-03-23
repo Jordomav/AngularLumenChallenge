@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use DB;
 use \App\Contact;
 
+
 class ContactsController extends BaseController
 {
     public function index()
@@ -34,7 +35,7 @@ class ContactsController extends BaseController
         $contact->save();
 
         if ($request->lists) {
-            $contact->contactLists()->attach($request->lists);
+            $contact->ContactLists()->attach($request->lists);
             $contact->save();
         }
     }
@@ -55,6 +56,11 @@ class ContactsController extends BaseController
         $contact->last_name = $request->last_name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;
+//        Update Contact Lists
+        if ($request->lists){
+            $contact->contactLists()->attach($request->lists);
+        }
+
         $contact->save();
 
     }
