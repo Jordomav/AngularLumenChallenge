@@ -61,9 +61,10 @@ class ContactsController extends BaseController
         $contact->phone = $request->phone;
 
         //Update Contact Lists
-        if ($request->lists){
-            $contact->contactLists()->attach($request->lists);
+        if ($request->contact_lists){
+            $contact->contactLists()->attach($request->contact_lists);
         }
+
         $contact->save();
     }
 
