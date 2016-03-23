@@ -27,9 +27,7 @@
     <hr>
                     <div class="row">
                         <div class="col-xs-12">
-
                             <h4>Create a contact</h4>
-
                             <form name="addContactForm" class="form-inline">
 
                                     <input name="first_name"
