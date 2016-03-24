@@ -83,7 +83,7 @@
                                         <div data-ng-repeat="contactList in lists.contactLists | filter:lists.q as filterResult"
                                              data-ng-click="contacts.toggleAddListId(contactList.id); lists.toggleSelect(contactList)"
                                              class="col-xs-12"
-                                             data-ng-class="{ 'selected' : contactList.selected }">
+                                             data-ng-class="{ selected : contactList.selected }">
                                             {{ contactList.title }}
                                         </div>
                                         <div data-ng-if="filterResult.length == 0">
@@ -286,7 +286,7 @@
                         <h4 class="modal-title">Contacts Lists</h4>
                     </div>
                     <div class="modal-body">
-                        <table class="table-condensed col-xs-2">
+                        <table class="table-condensed col-xs-6">
                                 <tr data-ng-repeat="contactList in contacts.selectedContact.contact_lists" class="row">
                                     <td class="col-xs-6">{{contactList.title}}</td>
                                     <td class="col-xs-6">
@@ -317,7 +317,7 @@
                                              data-ng-click="contacts.toggleEditedListId(contactList.id, lists.contactLists); lists.toggleSelect(contactList)"
                                              class="col-xs-12"
 
-                                             data-ng-class="{ 'selected' : contacts.belongsTo(contactList) }">
+                                             data-ng-class="{ selected : contacts.belongsTo(contactList) }">
                                             {{ contactList.title }}
                                         </div>
                                         <div data-ng-if="contactlist.length === 0" data-ng-model="lists.newList">
