@@ -302,9 +302,20 @@
                     });
             };
 
+
+            vm.toggleAddSelectedContactToList = function (contactList) {
+                var currentLists = vm.selectedContact.contact_lists;
+                if (contactList.selected = true) {
+                    currentLists.push(contactList);
+                    contactList.hide = true;
+                }
+            };
+
+
             vm.editContactLists = function (){
                 $http.post('update-contact', {});
             };
+
 
             vm.removeFromContactList = function(contactListId) {
 
@@ -318,13 +329,12 @@
                         _.each(vm.availableLists, function (availableList) {
                             if (list.id === availableList.id) {
                                 availableList.hide = false;
+                                availableList.selected = false;
                             }
                         });
                         return true;
                     }
                 });
-
-
             };
 
 

@@ -61,9 +61,11 @@
                 }
             };
 
+
             vm.toggleSelect = function (contactList) {
                 contactList.selected = !(contactList.selected);
             };
+
 
             vm.resetContactLists = function () {
                 _.each(vm.contactLists, function (list) {

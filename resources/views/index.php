@@ -316,7 +316,9 @@
                                     <div class="lists2">
                                         <div data-ng-repeat="contactList in contacts.availableLists | filter:q as contactlist"
                                              data-ng-hide="contactList.hide === true"
-                                             data-ng-click="contacts.toggleEditedListId(contactList.id, lists.contactLists); lists.toggleSelect(contactList)"
+                                             data-ng-click="contacts.toggleEditedListId(contactList.id, lists.contactLists);
+                                                             lists.toggleSelect(contactList);
+                                                             contacts.toggleAddSelectedContactToList(contactList)"
                                              class="col-xs-12"
 
                                              data-ng-class="{ selected : contactList.selected }">
