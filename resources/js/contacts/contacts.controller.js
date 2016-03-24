@@ -319,8 +319,16 @@
                 });
 
                 _.remove(vm.selectedContact.contact_lists, function (list) {
-                    return list.id === contactListId;
+                    if (list.id === contactListId) {
+                        _.each(vm.availableLists, function (availableList) {
+                            if (list.id === availableList.id) {
+                                availableList.hide = false;
+                            }
+                        });
+                        return true;
+                    }
                 });
+
 
             };
 
