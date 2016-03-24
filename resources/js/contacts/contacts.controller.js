@@ -38,6 +38,9 @@
             // Property to hold selected contact list for displaying contacts one list at a time.
             vm.selectedContactList = {id: 1};
 
+            // Array to hold copy of lists to display in Contact List modal.
+            vm.availableLists = [];
+
 
             /**
              *  Contact Methods
@@ -114,14 +117,6 @@
                 vm.selectedContact = contact;
             };
 
-            vm.belongsTo = function (contactList) {
-                _.each(vm.selectedContact.contact_lists, function (list) {
-                    if (list.id === contactList.id) {
-                        //list.selected = true;
-                        contactList.selected = true;
-                    }
-                });
-            };
 
             vm.addContact = function () {
 

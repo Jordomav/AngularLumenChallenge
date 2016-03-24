@@ -305,11 +305,13 @@
 
                                 <div class="contactListSelect">
                                     <div class="list-input">
-                                    <span><input data-ng-model="q"
-                                                 style="width:218px;"
-                                                 type="text"
-                                                 title="add-contact-list" placeholder="Search for Contact-Lists"
-                                                 required></span>
+                                        <span>
+                                            <input data-ng-model="q"
+                                                     style="width:218px;"
+                                                     type="text"
+                                                     title="add-contact-list" placeholder="Search for Contact-Lists"
+                                                     required>
+                                        </span>
                                     </div>
                                     <div class="lists2">
                                         <div data-ng-repeat="contactList in contacts.availableLists | filter:q as contactlist"
@@ -317,7 +319,7 @@
                                              data-ng-click="contacts.toggleEditedListId(contactList.id, lists.contactLists); lists.toggleSelect(contactList)"
                                              class="col-xs-12"
 
-                                             data-ng-class="{ selected : contacts.belongsTo(contactList) }">
+                                             data-ng-class="{ selected : contactList.selected }">
                                             {{ contactList.title }}
                                         </div>
                                         <div data-ng-if="contactlist.length === 0" data-ng-model="lists.newList">
