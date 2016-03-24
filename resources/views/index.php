@@ -192,7 +192,7 @@
                         </td>
 
                         <td>{{contact.updated_at | prettyDate }}</td>
-                        <td data-target="#listModal" data-toggle="modal"
+                        <td data-target="#list-modal" data-toggle="modal"
                             data-ng-click="contacts.setSelected(contact); contacts.initContactListModal(lists.contactLists)">
                             {{contacts.contactListPreviewFor(contact)}}
 
@@ -277,7 +277,7 @@
         </div>
 
         <!--    CONTACT LIST MODAL-->
-        <div id="listModal" class="modal fade" role="dialog">
+        <div id="list-modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -325,7 +325,8 @@
                                             {{ contactList.title }}
                                         </div>
                                         <div data-ng-if="contactlist.length === 0" data-ng-model="lists.newList">
-                                            <strong data-ng-click="lists.saveContactList(q); contacts.toggleAddListId(lists.contactLists.length + 1)">"{{q}}" could not be found. Click to add.</strong>
+                                            <strong data-ng-click="lists.saveContactList(q); contacts.toggleAddListId(lists.contactLists.length + 1)">
+                                                "{{q}}" could not be found. Click to add.</strong>
                                         </div>
                                     </div>
 

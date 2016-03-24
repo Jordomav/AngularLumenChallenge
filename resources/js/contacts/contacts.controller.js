@@ -202,10 +202,23 @@
                         }
                     });
                 });
+
+                getCurrentListsForSelectedContact();
+
+                function getCurrentListsForSelectedContact() {
+                    _.each(vm.selectedContact.contact_lists, function (currentList) {
+                        vm.editedListIds.push(currentList.id);
+                    });
+                }
+
+                console.log(vm.selectedContact.first_name + ' ' + vm.selectedContact.last_name);
+                console.log(vm.editedListIds);
+                console.log('**********************');
             };
 
 
             vm.toggleEditedListId = function (contactListId){
+
 
                 var indexOfId = vm.editedListIds.indexOf(contactListId);
 
@@ -222,6 +235,7 @@
                     console.log(vm.editedListIds);
                 }
 
+                console.log(vm.editedListIds);
             };
 
 
@@ -308,6 +322,7 @@
                 if (contactList.selected = true) {
                     currentLists.push(contactList);
                     contactList.hide = true;
+                    contactList.selected = false;
                 }
             };
 
@@ -330,6 +345,9 @@
                             if (list.id === availableList.id) {
                                 availableList.hide = false;
                                 availableList.selected = false;
+
+                                vm.editedListIds.splice(vm.editedListIds.indexOf(list.id), 1);
+                                console.log(vm.editedListIds);
                             }
                         });
                         return true;
