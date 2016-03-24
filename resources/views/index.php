@@ -337,7 +337,11 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal" data-ng-click=""><i class="fa fa-pencil"></i> Update Contact</button>
+                        <button type="button"
+                                class="btn btn-success"
+                                data-dismiss="modal"
+                                data-ng-click="contacts.saveContactListChanges(contacts.selectedContact)">
+                            <i class="fa fa-pencil"></i> Update Contact</button>
                         <button data-ng-click="contacts.cancelListModal()" type="button"
                                 class="btn btn-default"
                                 data-dismiss="modal">

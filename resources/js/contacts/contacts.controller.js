@@ -244,6 +244,16 @@
                 console.log(vm.editedListIds);
             };
 
+            vm.saveContactListChanges = function (contact) {
+                $http.post('update-contact', contact)
+                    .then( function successCallback(res) {
+
+                    }, function errorCallback(err) {
+                        alert('There was a problem saving the changes.');
+                        console.log(err);
+                    });
+            };
+
             vm.cancelListModal = function () {
                 console.log(cachedListsIfModalCancelled);
 
