@@ -34,6 +34,7 @@
 
             // List to hold Contact List IDs for edited Contact
             vm.editedListIds = [];
+            var cachedListsIfModalCancelled = [];
 
             // Property to hold selected contact list for displaying contacts one list at a time.
             vm.selectedContactList = {id: 1};
@@ -190,18 +191,31 @@
 
             vm.initContactListModal = function (contactLists) {
 
+                console.log('init contact list modal called');
+
+                cachedListsIfModalCancelled = [];
+
+                // Cache copy of current contact lists in case user clicks cancel button to close the modal without
+                // saving changes.
+                angular.copy(vm.selectedContact.contact_lists, cachedListsIfModalCancelled);
+
+                // Make a copy of the master Contact Lists array to display inside the modal.
                 vm.availableLists = contactLists;
 
+                // Show list all of the available Contact Lists that the Contact does not currently belong to.
                 _.each(vm.availableLists, function (availableList) {
-
                     availableList.hide = false;
-
                     _.each(vm.selectedContact.contact_lists, function (belongsToList) {
                         if (belongsToList.id === availableList.id) {
                             availableList.hide = true;
                         }
                     });
                 });
+
+
+                // Populate list with current Contact List IDs. This list will also be updated when we add or remove
+                // Contact Lists in the Modal.
+                vm.editedListIds = [];
 
                 getCurrentListsForSelectedContact();
 
@@ -210,15 +224,10 @@
                         vm.editedListIds.push(currentList.id);
                     });
                 }
-
-                console.log(vm.selectedContact.first_name + ' ' + vm.selectedContact.last_name);
-                console.log(vm.editedListIds);
-                console.log('**********************');
             };
 
 
             vm.toggleEditedListId = function (contactListId){
-
 
                 var indexOfId = vm.editedListIds.indexOf(contactListId);
 
@@ -231,13 +240,16 @@
 
                 } else {
                     vm.editedListIds.push(contactListId);
-
-                    console.log(vm.editedListIds);
                 }
-
                 console.log(vm.editedListIds);
             };
 
+            vm.cancelListModal = function () {
+                console.log(cachedListsIfModalCancelled);
+
+                vm.selectedContact.contact_lists = cachedListsIfModalCancelled;
+                console.log(vm.selectedContact.contact_lists);
+            };
 
             vm.resetContactForm = function () {
                 vm.firstNameInput = '';
