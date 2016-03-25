@@ -134,6 +134,10 @@
                 }
             };
 
+            vm.toggleContactListMenu = function () {
+                console.log('toggle');
+                vm.contactListMenu = ! (vm.contactListMenu);
+            };
 
             vm.resetContactForm = function () {
                 vm.firstNameInput = '';
@@ -260,6 +264,35 @@
 
                 vm.selectedContact.contact_lists = cachedListsIfModalCancelled;
                 console.log(vm.selectedContact.contact_lists);
+            };
+
+
+            vm.resetContactForm = function () {
+                vm.firstNameInput = '';
+                vm.lastNameInput = '';
+                vm.emailInput = '';
+                vm.phoneInput = '';
+                vm.belongsToListIds = [];
+            };
+
+
+            /**
+             *  Contact List Dropdown
+             */
+            vm.contactListMenu = false;
+
+            vm.toggleContactListMenu = function () {
+                vm.contactListMenu = ! (vm.contactListMenu);
+            };
+
+            vm.closeContactListMenu = function () {
+                vm.contactListMenu = false;
+            };
+
+            vm.nameSort = false;
+
+            vm.toggleNames = function(){
+                vm.nameSort = !(vm.nameSort);
             };
 
 
