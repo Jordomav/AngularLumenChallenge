@@ -245,7 +245,13 @@
             };
 
             vm.saveContactListChanges = function (contact) {
-                $http.post('update-contact', contact)
+
+                console.log({id: contact.id, lists: vm.editedListIds});
+
+                $http.post('update-contact-lists', {
+                    id: contact.id,
+                    lists: vm.editedListIds
+                })
                     .then( function successCallback(res) {
 
                     }, function errorCallback(err) {
@@ -254,12 +260,14 @@
                     });
             };
 
+
             vm.cancelListModal = function () {
                 console.log(cachedListsIfModalCancelled);
 
                 vm.selectedContact.contact_lists = cachedListsIfModalCancelled;
                 console.log(vm.selectedContact.contact_lists);
             };
+
 
             vm.resetContactForm = function () {
                 vm.firstNameInput = '';

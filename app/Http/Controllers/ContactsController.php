@@ -17,7 +17,7 @@ class ContactsController extends BaseController
         $contacts = Contact::all();
         $contactsWithLists = new Collection;
         foreach ($contacts as $contact) {
-            $contact->ContactLists;
+            $contact->contactLists;
             $contactsWithLists->add($contact);
         }
         return $contactsWithLists;
@@ -36,7 +36,7 @@ class ContactsController extends BaseController
         $contact->save();
 
         if ($request->lists) {
-            $contact->ContactLists()->attach($request->lists);
+            $contact->contactLists()->attach($request->lists);
             $contact->save();
         }
     }
@@ -60,13 +60,16 @@ class ContactsController extends BaseController
         $contact->email = $request->email;
         $contact->phone = $request->phone;
 
-        //Update Contact Lists
-        if ($request->contact_lists){
-            $contact->contactLists()->attach($request->contact_lists);
-        }
-
         $contact->save();
     }
+
+    public function updateContactLists(Request $request)
+    {
+        $contact = Contact::find($request->id);
+        $contact->updateExistingPivot($contact->id, $request->lists);
+
+    }
+
 
 
     public function deleteContacts()
