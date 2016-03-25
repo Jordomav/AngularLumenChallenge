@@ -183,11 +183,32 @@
 
 
             /**
+             *  Contact List Drop-down
+             */
+            vm.contactListMenu = false;
+
+            vm.toggleContactListMenu = function () {
+                vm.contactListMenu = ! (vm.contactListMenu);
+            };
+
+            vm.closeContactListMenu = function () {
+                vm.contactListMenu = false;
+            };
+
+            vm.nameSort = false;
+
+            vm.toggleNames = function(){
+                vm.nameSort = !(vm.nameSort);
+            };
+
+
+            /**
              *  Contact List Modal Methods
              */
             vm.setSelected = function (contact) {
                 vm.selectedContact = contact;
             };
+
 
             vm.initContactListModal = function (contactLists) {
 
@@ -233,18 +254,13 @@
                     vm.editedListIds.splice(
                         indexOfId, indexOfId + 1);
 
-                    console.log(vm.editedListIds);
-
                 } else {
                     vm.editedListIds.push(contactListId);
                 }
-                console.log(vm.editedListIds);
             };
 
 
             vm.saveContactListChanges = function (contact) {
-
-                console.log({id: contact.id, lists: vm.editedListIds});
 
                 $http.post('update-contact-lists', {
                     id: contact.id,
@@ -260,10 +276,7 @@
 
 
             vm.cancelListModal = function () {
-                console.log(cachedListsIfModalCancelled);
-
                 vm.selectedContact.contact_lists = cachedListsIfModalCancelled;
-                console.log(vm.selectedContact.contact_lists);
             };
 
 
@@ -275,25 +288,6 @@
                 vm.belongsToListIds = [];
             };
 
-
-            /**
-             *  Contact List Dropdown
-             */
-            vm.contactListMenu = false;
-
-            vm.toggleContactListMenu = function () {
-                vm.contactListMenu = ! (vm.contactListMenu);
-            };
-
-            vm.closeContactListMenu = function () {
-                vm.contactListMenu = false;
-            };
-
-            vm.nameSort = false;
-
-            vm.toggleNames = function(){
-                vm.nameSort = !(vm.nameSort);
-            };
 
 
             /**
@@ -326,7 +320,6 @@
                         listIds.push(list.id);
                     });
                     contact.lists = listIds;
-                    console.log(contact);
                 } else {
                     contact.lists = [];
                 }
@@ -346,7 +339,6 @@
                                 contact.editPhone = false;
                                 break;
                             case 'contact_lists':
-                                console.log('contact lists edited');
                                 break;
                         }
 
@@ -373,7 +365,6 @@
 
 
             vm.removeFromContactList = function(contactListId) {
-                console.log('remove contact list called');
 
                 $http.post('remove-from-contact-list', {
                     contact_id: vm.selectedContact.id,
@@ -388,7 +379,6 @@
                                 availableList.selected = false;
 
                                 vm.editedListIds.splice(vm.editedListIds.indexOf(list.id), 1);
-                                console.log(vm.editedListIds);
                             }
                         });
                         return true;
