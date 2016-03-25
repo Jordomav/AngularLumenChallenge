@@ -340,7 +340,7 @@
                         <button type="button"
                                 class="btn btn-success"
                                 data-dismiss="modal"
-                                data-ng-click="contacts.saveContactListChanges(contacts.selectedContact)">
+                                data-ng-click="contacts.saveEdit(contacts.selectedContact, 'contact_lists')">
                             <i class="fa fa-pencil"></i> Update Contact</button>
                         <button data-ng-click="contacts.cancelListModal()" type="button"
                                 class="btn btn-default"

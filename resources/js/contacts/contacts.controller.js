@@ -287,7 +287,16 @@
 
 
             vm.saveEdit = function (contact, fieldName) {
-                console.log(contact);
+                var listIds = [];
+                if (contact.contact_lists.length > 0) {
+                    _.each(contact.contact_lists, function (list) {
+                        listIds.push(list.id);
+                    });
+                    contact.lists = listIds;
+                    console.log(contact);
+                } else {
+                    contact.lists = [];
+                }
                 $http.post('update-contact', contact)
                     .then(function successCallback (res) {
                         switch (fieldName) {
@@ -302,6 +311,9 @@
                                 break;
                             case 'phone':
                                 contact.editPhone = false;
+                                break;
+                            case 'contact_lists':
+                                console.log('contact lists edited');
                                 break;
                         }
 
@@ -366,7 +378,7 @@
                         alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
                     });
             };
-            
+
 
             /**
              *  Display Contacts when application starts.

@@ -18,7 +18,6 @@ $app->get('/', function () use ($app) {
 $app->get('get-contacts', 'ContactsController@index');
 $app->post('save-contact', 'ContactsController@store');
 $app->post('update-contact', 'ContactsController@update');
-$app->post('update-contact-lists', 'ContactController@updateContactLists');
 $app->post('soft-delete', 'ContactsController@toggleSoftDelete');
 $app->post('delete-contacts', 'ContactsController@deleteContacts');
 $app->post('remove-from-contact-list', 'ContactsController@removeFromContactList');
