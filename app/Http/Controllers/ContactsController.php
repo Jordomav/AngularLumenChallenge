@@ -66,8 +66,8 @@ class ContactsController extends BaseController
     public function updateContactLists(Request $request)
     {
         $contact = Contact::find($request->id);
-        $contact->updateExistingPivot($contact->id, $request->lists);
-
+        $contact->contactLists()->attach($request->lists);
+        $contact->save();
     }
 
 

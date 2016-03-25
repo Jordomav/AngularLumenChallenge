@@ -41,7 +41,7 @@
 
 
             /**
-             *  Contact Methods
+             *  Contact Display Methods
              */
             vm.displayContacts = function () {
 
@@ -82,7 +82,7 @@
                         }
                     }
 
-                    // Add elipses if
+                    // Add elipses for long previews
                     if (output.length < 25) {
                         return output;
                     } else {
@@ -90,6 +90,7 @@
                     }
                 }
             };
+
 
             vm.displaySelectedContactList = function (selectedList) {
 
@@ -111,11 +112,9 @@
             };
 
 
-            vm.setSelected = function (contact) {
-                vm.selectedContact = contact;
-            };
-
-
+            /**
+             *  Add New Contact Methods
+             */
             vm.addContact = function () {
 
                 if ( !(_.isEmpty(vm.newContactData())) ) {
@@ -136,25 +135,19 @@
             };
 
 
-            vm.toggleContactInTrash = function(contact){
-
-                contact.intrash = !(contact.intrash);
-
-                var promise = ContactsService.saveInTrashState(contact);
-
-                promise.then( function complete() {},
-
-                        function error(err) {
-                            alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
-                        });
+            vm.resetContactForm = function () {
+                vm.firstNameInput = '';
+                vm.lastNameInput = '';
+                vm.emailInput = '';
+                vm.phoneInput = '';
+                vm.belongsToListIds = [];
             };
 
 
+            // TODO: get rid of this and do proper validation and formatting of inputs for new Contacts.
             vm.newContactData = function () {
 
                 if ( !(_.isEmpty(vm.firstNameInput, vm.lastNameInput, vm.emailInput, vm.phoneInput) )) {
-
-                    console.log('hooray, contact form is filled out');
 
                     return  {
                         first_name: vm.firstNameInput,
@@ -171,7 +164,6 @@
             };
 
 
-            //TODO refactor to consolidate toggle add list id functions
             vm.toggleAddListId = function (contactListId) {
 
                 var indexOfId = vm.belongsToListIds.indexOf(contactListId);
@@ -186,9 +178,14 @@
             };
 
 
-            vm.initContactListModal = function (contactLists) {
+            /**
+             *  Contact List Modal Methods
+             */
+            vm.setSelected = function (contact) {
+                vm.selectedContact = contact;
+            };
 
-                console.log('init contact list modal called');
+            vm.initContactListModal = function (contactLists) {
 
                 cachedListsIfModalCancelled = [];
 
@@ -208,7 +205,6 @@
                         }
                     });
                 });
-
 
                 // Populate list with current Contact List IDs. This list will also be updated when we add or remove
                 // Contact Lists in the Modal.
@@ -241,6 +237,7 @@
                 console.log(vm.editedListIds);
             };
 
+
             vm.saveContactListChanges = function (contact) {
 
                 console.log({id: contact.id, lists: vm.editedListIds});
@@ -263,35 +260,6 @@
 
                 vm.selectedContact.contact_lists = cachedListsIfModalCancelled;
                 console.log(vm.selectedContact.contact_lists);
-            };
-
-
-            vm.resetContactForm = function () {
-                vm.firstNameInput = '';
-                vm.lastNameInput = '';
-                vm.emailInput = '';
-                vm.phoneInput = '';
-                vm.belongsToListIds = [];
-            };
-
-
-            /**
-             *  Contact List Dropdown
-             */
-            vm.contactListMenu = false;
-
-            vm.toggleContactListMenu = function () {
-                vm.contactListMenu = ! (vm.contactListMenu);
-            };
-
-            vm.closeContactListMenu = function () {
-                vm.contactListMenu = false;
-            };
-
-            vm.nameSort = false;
-
-            vm.toggleNames = function(){
-                vm.nameSort = !(vm.nameSort);
             };
 
 
@@ -384,13 +352,21 @@
 
 
             /**
-             * Edit Contacts and save to database
+             *  Soft Delete Contact (send to trash bin)
              */
-            vm.updateUser = function(data){
-                console.log('data');
-                $http.post('update-contact');
-            };
+            vm.toggleContactInTrash = function(contact){
 
+                contact.intrash = !(contact.intrash);
+
+                var promise = ContactsService.saveInTrashState(contact);
+
+                promise.then( function complete() {},
+
+                    function error(err) {
+                        alert('There was an error storing the \'intrash\' state of ' + contact.first_name);
+                    });
+            };
+            
 
             /**
              *  Display Contacts when application starts.
