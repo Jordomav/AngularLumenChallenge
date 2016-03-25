@@ -91,27 +91,19 @@
                 }
             };
 
-
-            // TODO: this is not working. Not sure why.
+            
             vm.displaySelectedContactList = function () {
-
-                var hideState = true;
-
+                console.log(vm.selectedContactList.title);
                 _.each(vm.contacts, function (contact) {
-                    if (contact.contact_lists.length > 0) {
+                    contact.hide = true;
+                    _.some(contact.contact_lists, function (list) {
 
-                        _.some(contact.contact_lists, function (list) {
-                            if (parseInt(list.id) === parseInt(vm.selectedContactList.id)) {
-                                console.log(list.id);
-                                console.log(vm.selectedContactList.id);
-                                hideState = false;
-                            }});
-                        
-                    } else {
-                        hideState = true;
-                    }
-                    contact.hide = hideState;
-                    console.log(contact.first_name + ' ' + contact.hide);
+                        if (list.title === vm.selectedContactList.title &&
+                                list.id === vm.selectedContactList.id) {
+                            console.log (contact.first_name + ' ' + list.title + ' match');
+                            contact.hide = false;
+                        }
+                    });
                 });
             };
 

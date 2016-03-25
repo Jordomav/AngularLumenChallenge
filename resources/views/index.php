@@ -132,7 +132,7 @@
                 </thead>
                 <tbody class="table-hover">
                     <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse | filter:q as results"
-                        data-ng-hide="contact.deleted || contact.intrash || contact.hide === true" class="contact">
+                        data-ng-hide="contact.hide === true || contact.deleted || contact.intrash" class="contact">
 
                         <td>
                             <!--  First Name -->
