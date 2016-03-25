@@ -18,9 +18,10 @@
         </div>
         <form class="col-xs-2 form-inline listControl" data-ng-controller="ContactListsController as lists">
 
+            <!--  TODO: list sorting seems broken  -->
             <select data-ng-options="list.title for list in lists.contactLists track by list.id"
                     data-ng-model="contacts.selectedContactList"
-                    data-ng-change="contacts.displaySelectedContactList(contacts.selectedContactList)">
+                    data-ng-change="contacts.displaySelectedContactList()">
             </select>
 
         </form>
@@ -131,7 +132,7 @@
                 </thead>
                 <tbody class="table-hover">
                     <tr data-ng-repeat="contact in contacts.contacts | orderBy:sortType:sortReverse | filter:q as results"
-                        data-ng-hide="contact.deleted || contact.intrash || contact.hide" class="contact">
+                        data-ng-hide="contact.deleted || contact.intrash || contact.hide === true" class="contact">
 
                         <td>
                             <!--  First Name -->

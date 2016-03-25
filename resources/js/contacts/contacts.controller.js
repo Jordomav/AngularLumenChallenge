@@ -92,22 +92,26 @@
             };
 
 
-            vm.displaySelectedContactList = function (selectedList) {
+            // TODO: this is not working. Not sure why.
+            vm.displaySelectedContactList = function () {
 
-                var hideState = false;
+                var hideState = true;
 
                 _.each(vm.contacts, function (contact) {
                     if (contact.contact_lists.length > 0) {
 
                         _.some(contact.contact_lists, function (list) {
-                            if (list.id === selectedList.id) {
+                            if (parseInt(list.id) === parseInt(vm.selectedContactList.id)) {
+                                console.log(list.id);
+                                console.log(vm.selectedContactList.id);
                                 hideState = false;
-                            }
-                        });
+                            }});
+                        
                     } else {
                         hideState = true;
                     }
                     contact.hide = hideState;
+                    console.log(contact.first_name + ' ' + contact.hide);
                 });
             };
 
@@ -351,7 +355,7 @@
 
             vm.toggleAddSelectedContactToList = function (contactList) {
                 var currentLists = vm.selectedContact.contact_lists;
-                if (contactList.selected = true) {
+                if (contactList.selected === true) {
                     currentLists.push(contactList);
                     contactList.hide = true;
                     contactList.selected = false;
