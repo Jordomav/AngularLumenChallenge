@@ -59,9 +59,7 @@ class ContactsController extends BaseController
         $contact->last_name = $request->last_name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;
-
         $contact->contactLists()->sync($request->lists);
-
 
         $contact->save();
     }
@@ -80,4 +78,11 @@ class ContactsController extends BaseController
         DB::table('contacts')->where('intrash', '1')->delete();
     }
 
+
+    public function removeFromContactList(Request $request)
+    {
+        $contact = Contact::find($request->contact_id);
+        $contact->contactLists()->detach($request->contact_list_id);
+        $contact->save();
+    }
 }

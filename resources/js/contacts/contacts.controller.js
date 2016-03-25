@@ -340,6 +340,7 @@
 
 
             vm.removeFromContactList = function(contactListId) {
+                console.log('remove contact list called');
 
                 $http.post('remove-from-contact-list', {
                     contact_id: vm.selectedContact.id,
