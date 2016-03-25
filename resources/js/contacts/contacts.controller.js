@@ -19,9 +19,6 @@
             // Empty lists to hold all Contacts.
             vm.contacts = [];
 
-            // Master list to hold all available Contact Lists
-            vm.contactLists = [];
-
             // Properties to store values from new Contact form.
             vm.firstNameInput = '';
             vm.lastNameInput = '';
